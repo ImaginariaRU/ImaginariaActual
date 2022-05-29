@@ -1,0 +1,46 @@
+{
+    "name": "imaginaria/imaginaria",
+    "description": "Imaginaria.ru",
+    "type": "project",
+    "config": {
+        "optimize-autoloader": true,
+        "vendor-dir": "vendor",
+        "platform-check": false
+    },
+    "require": {
+        "php": ">=7.3",
+        "ext-curl": "*",
+        "ext-fileinfo": "*",
+        "ext-mysqli": "*",
+        "ext-json": "*",
+        "ext-iconv": "*",
+        "ext-mbstring": "*",
+        "ext-pdo": "*",
+        "ext-gd": "*",
+        "psr/log": "^1.1",
+        "karelwintersky/arris": "^1.70",
+        "karelwintersky/arris.cache": "^0.5.2",
+        "mobiledetect/mobiledetectlib": "^2.8",
+        "vlucas/phpdotenv": "^3.3",
+        "symfony/var-dumper": "^3.4.36",
+        "google/recaptcha": "^1.2",
+        "monolog/monolog": "^1.24",
+        "mrclay/jsmin-php": "^2.3",
+        "cerdic/css-tidy": "^1.6",
+        "xxtea/xxtea": "^1.0",
+        "spatie/regex": "^1.4",
+        "nette/utils": "^3.2",
+        "curl/curl": "^2.3",
+        "ajur-media/fluentpdo": "^1.0",
+        "ext-readline": "*",
+        "ext-simplexml": "*",
+        "ajur-media/jevix": "^2.2"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-latest"
+    },
+    "autoload": {
+        "psr-4": {
+        }
+    }
+}
