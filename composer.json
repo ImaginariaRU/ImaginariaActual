@@ -17,6 +17,8 @@
         "ext-mbstring": "*",
         "ext-pdo": "*",
         "ext-gd": "*",
+        "ext-readline": "*",
+        "ext-simplexml": "*",
         "psr/log": "^1.1",
         "karelwintersky/arris": "^1.70",
         "karelwintersky/arris.cache": "^0.5.2",
@@ -32,10 +34,8 @@
         "nette/utils": "^3.2",
         "curl/curl": "^2.3",
         "ajur-media/fluentpdo": "^1.0",
-        "ext-readline": "*",
-        "ext-simplexml": "*",
-        "ajur-media/jevix": "^2.2",
-        "imaginaria/liveimage": "^1.0"
+        "imaginaria/liveimage": "^1.0",
+        "imaginaria/jevix": "^2.3"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"

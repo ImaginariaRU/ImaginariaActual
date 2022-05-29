@@ -6,7 +6,7 @@ https://github.com/AgelxNash/Jevix/pull/1/commits/179e940e839764fff648302828d8df
 https://github.com/ur001/Jevix/network
  */
 
-use AJUR\Jevix\Jevix;
+use Imaginaria\Jevix\Jevix;
 
 /**
  * Модуль обработки текста на основе типографа Jevix
