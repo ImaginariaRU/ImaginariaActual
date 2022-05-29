@@ -34,7 +34,8 @@
         "ajur-media/fluentpdo": "^1.0",
         "ext-readline": "*",
         "ext-simplexml": "*",
-        "ajur-media/jevix": "^2.2"
+        "ajur-media/jevix": "^2.2",
+        "imaginaria/liveimage": "^1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"

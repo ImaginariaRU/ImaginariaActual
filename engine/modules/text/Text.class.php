@@ -1,31 +1,12 @@
 <?php
-/*-------------------------------------------------------
-*
-*   LiveStreet Engine Social Networking
-*   Copyright © 2008 Mzhelskiy Maxim
-*
-*--------------------------------------------------------
-*
-*   Official site: www.livestreet.ru
-*   Contact e-mail: rus.engine@gmail.com
-*
-*   GNU General Public License, version 2:
-*   http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
-*
----------------------------------------------------------
-*/
 
 //@todo: KW: load with composer
 /*
-https://packagist.org/packages/agelxnash/jevix
-
-
 https://github.com/AgelxNash/Jevix/pull/1/commits/179e940e839764fff648302828d8df68bd7e7981
 https://github.com/ur001/Jevix/network
-
  */
 
-// require_once(Config::Get('path.root.engine') . '/lib/external/Jevix/jevix.class.php');
+use AJUR\Jevix\Jevix;
 
 /**
  * Модуль обработки текста на основе типографа Jevix
@@ -166,18 +147,18 @@ class ModuleText extends Module
         /**
          * dailymotion.com
          */
-        $pattern_dailymotion = "/(<video>)(?:https?:\/\/)?(?:www\.)?dailymotion.com\/video\/(\w+)(?:_.*?)?(<\/video>)/ui";
+        /*$pattern_dailymotion = "/(<video>)(?:https?:\/\/)?(?:www\.)?dailymotion.com\/video\/(\w+)(?:_.*?)?(<\/video>)/ui";
         $pattern_dailymotion_short = "/(<video>)(?:https?:\/\/)?(?:www\.)?dai.ly\/(\w+)(?:_.*?)?(<\/video>)/ui";
         $template_dailymotion = '<iframe frameborder="0" width="560" height="315" src="//www.dailymotion.com/embed/video/$2" allowfullscreen></iframe>';
         $sText = preg_replace($pattern_dailymotion, $template_dailymotion, $sText);
-        $sText = preg_replace($pattern_dailymotion_short, $template_dailymotion, $sText);
+        $sText = preg_replace($pattern_dailymotion_short, $template_dailymotion, $sText);*/
 
         /**
          * coub.com
          */
-        $pattern_coub = "/(<video>)(?:https?:\/\/)?(?:www\.)?coub.com\/view\/(\w+)(<\/video>)/ui";
+        /*$pattern_coub = "/(<video>)(?:https?:\/\/)?(?:www\.)?coub.com\/view\/(\w+)(<\/video>)/ui";
         $template_coub = '<iframe src="//coub.com/embed/$2?muted=false&autostart=false&originalSize=false&hideTopBar=true&noSiteButtons=true&startWithHD=false" allowfullscreen="true" frameborder="0" width="400" height="400"></iframe>';
-        $sText = preg_replace($pattern_coub, $template_coub, $sText);
+        $sText = preg_replace($pattern_coub, $template_coub, $sText);*/
 
         /**
          * rutube.ru
@@ -189,16 +170,16 @@ class ModuleText extends Module
         /**
          * gfycat.com
          */
-        $pattern_gfycat = "/(<video>)(?:https?:\/\/)?(?:www\.)?gfycat.com\/(?:[\w\d-_\/]+\/)?([\w\d-_]+)(\?[\w\d-_\/=%&]*)?(<\/video>)/ui";
+        /*$pattern_gfycat = "/(<video>)(?:https?:\/\/)?(?:www\.)?gfycat.com\/(?:[\w\d-_\/]+\/)?([\w\d-_]+)(\?[\w\d-_\/=%&]*)?(<\/video>)/ui";
         $template_gfycat = '<iframe src="//gfycat.com/ifr/$2$3" allowfullscreen="true" frameborder="0" width="560" height="315"></iframe>';
-        $sText = preg_replace($pattern_gfycat, $template_gfycat, $sText);
+        $sText = preg_replace($pattern_gfycat, $template_gfycat, $sText);*/
 
         /**
          * vault.mle.party (PeerTube)
          */
-        $pattern_PeerTube = "/(<video>)(?:https?:\/\/)?(?:www\.)?vault.mle.party\/videos\/\w+\/([\w\d-_]+)\/?(\?[\w\d-_\/=%&]*)?(<\/video>)/ui";
+        /*$pattern_PeerTube = "/(<video>)(?:https?:\/\/)?(?:www\.)?vault.mle.party\/videos\/\w+\/([\w\d-_]+)\/?(\?[\w\d-_\/=%&]*)?(<\/video>)/ui";
         $template_PeerTube = '<iframe src="//vault.mle.party/videos/embed/$2" allowfullscreen="true" frameborder="0" width="560" height="315"></iframe>';
-        $sText = preg_replace($pattern_PeerTube, $template_PeerTube, $sText);
+        $sText = preg_replace($pattern_PeerTube, $template_PeerTube, $sText);*/
 
         /**
          * video.yandex.ru
@@ -218,15 +199,11 @@ class ModuleText extends Module
         $pattern_vk_video = '/<video>http(?:s|):\/\/(?:www\.|)vk\.com\/video([\d]+)_([\d]+)<\/video>/Ui';
 
         if (preg_match($pattern_vk_video, $sText)) {
-
             preg_match_all($pattern_vk_video, $sText, $sTextMatches);
 
             for ($i = 0; $i < count($sTextMatches[1]); $i++) {
-
                 $html = file_get_contents('http://vk.com/video' . $sTextMatches[1][$i] . '_' . $sTextMatches[2][$i]);
-
                 preg_match('/\\\"hash2\\\":\\\"([a-f0-9]+)\\\"/Ui', $html, $matches);
-
                 $sText = preg_replace(
                     '/<video>(?:http(?:s|):|)(?:\/\/|)(?:www\.|)vk\.com\/video' . $sTextMatches[1][$i] . '_' . $sTextMatches[2][$i] . '(?:\?[\s\S]+|)<\/video>/Ui',
                     '<iframe src="http://vk.com/video_ext.php?oid=' . $sTextMatches[1][$i] . '&id=' . $sTextMatches[2][$i] . '&hash=' . $matches[1] . '" width="560" height="315" frameborder="0"></iframe>',

@@ -338,7 +338,7 @@ class Engine extends LsObject
 
             default:
                 throw new Exception("Unknown entity '{$sName}' given.");
-        }
+        } // switch
 
         $sClass = isset($sPlugin)
             ? 'Plugin' . $sPlugin . '_Module' . $sModule . '_Entity' . $sEntity
