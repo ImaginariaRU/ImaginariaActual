@@ -768,13 +768,10 @@ class Engine extends LsObject
             // Сущность
             if ($aInfo[self::CI_PLUGIN]) {
                 // Сущность модуля плагина
-                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN])
-                    . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE])
-                    . '/entity/' . $aInfo[self::CI_ENTITY] . '.entity.class.php';
+                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/entity/' . $aInfo[self::CI_ENTITY] . '.entity.class.php';
             } else {
                 // Сущность модуля ядра
-                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE])
-                    . '/entity/' . $aInfo[self::CI_ENTITY] . '.entity.class.php';
+                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/entity/' . $aInfo[self::CI_ENTITY] . '.entity.class.php';
                 if (!is_file($sPath)) {
                     $sPath = str_replace('/classes/modules/', '/engine/modules/', $sPath);
                 }
@@ -783,13 +780,10 @@ class Engine extends LsObject
             // Маппер
             if ($aInfo[self::CI_PLUGIN]) {
                 // Маппер модуля плагина
-                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN])
-                    . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE])
-                    . '/mapper/' . $aInfo[self::CI_MAPPER] . '.mapper.class.php';
+                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/mapper/' . $aInfo[self::CI_MAPPER] . '.mapper.class.php';
             } else {
                 // Маппер модуля ядра
-                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE])
-                    . '/mapper/' . $aInfo[self::CI_MAPPER] . '.mapper.class.php';
+                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/mapper/' . $aInfo[self::CI_MAPPER] . '.mapper.class.php';
                 if (!is_file($sPath)) {
                     $sPath = str_replace('/classes/modules/', '/engine/modules/', $sPath);
                 }
@@ -798,24 +792,19 @@ class Engine extends LsObject
             // Экшн
             if ($aInfo[self::CI_PLUGIN]) {
                 // Экшн плагина
-                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN])
-                    . '/classes/actions/Action' . $aInfo[self::CI_ACTION] . '.class.php';
+                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/actions/Action' . $aInfo[self::CI_ACTION] . '.class.php';
             } else {
                 // Экшн ядра
-                $sPath .= 'classes/actions/Action'
-                    . $aInfo[self::CI_ACTION] . '.class.php';
+                $sPath .= 'engine/classes/actions/Action' . $aInfo[self::CI_ACTION] . '.class.php';
             }
         } elseif ($aInfo[self::CI_MODULE]) {
             // Модуль
             if ($aInfo[self::CI_PLUGIN]) {
                 // Модуль плагина
-                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN])
-                    . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE])
-                    . '/' . $aInfo[self::CI_MODULE] . '.class.php';;
+                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/' . $aInfo[self::CI_MODULE] . '.class.php';;
             } else {
                 // Модуль ядра
-                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE])
-                    . '/' . $aInfo[self::CI_MODULE] . '.class.php';
+                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/' . $aInfo[self::CI_MODULE] . '.class.php';
                 if (!is_file($sPath)) {
                     $sPath = str_replace('/classes/modules/', '/engine/modules/', $sPath);
                 }
@@ -824,9 +813,7 @@ class Engine extends LsObject
             // Хук
             if ($aInfo[self::CI_PLUGIN]) {
                 // Хук плагина
-                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN])
-                    . '/classes/hooks/Hook' . $aInfo[self::CI_HOOK]
-                    . '.class.php';;
+                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/hooks/Hook' . $aInfo[self::CI_HOOK] . '.class.php';;
             } else {
                 // Хук ядра
                 $sPath .= 'classes/hooks/Hook' . $aInfo[self::CI_HOOK] . '.class.php';
@@ -835,18 +822,14 @@ class Engine extends LsObject
             // Блок
             if ($aInfo[self::CI_PLUGIN]) {
                 // Блок плагина
-                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN])
-                    . '/classes/blocks/Block' . $aInfo[self::CI_BLOCK]
-                    . '.class.php';;
+                $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/blocks/Block' . $aInfo[self::CI_BLOCK] . '.class.php';;
             } else {
                 // Блок ядра
                 $sPath .= 'classes/blocks/Block' . $aInfo[self::CI_BLOCK] . '.class.php';
             }
         } elseif ($aInfo[self::CI_PLUGIN]) {
             // Плагин
-            $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN])
-                . '/Plugin' . $aInfo[self::CI_PLUGIN]
-                . '.class.php';;
+            $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/Plugin' . $aInfo[self::CI_PLUGIN] . '.class.php';;
         } else {
             $sClassName = is_string($oObject) ? $oObject : get_class($oObject);
             $sPath .= 'engine/classes/' . $sClassName . '.class.php';

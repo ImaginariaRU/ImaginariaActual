@@ -586,12 +586,12 @@ return array(
 	/**
 	 * Стена
 	 */
-	'wall_add_pid_error' => 'На данное сообщение невозможно ответить',
-	'wall_add_error' => 'Ошибка добавления записи на стены',
+	'wall_add_pid_error' => 'На это сообщение невозможно ответить',
+	'wall_add_error' => 'Ошибка добавления записи на стену',
 	'wall_add_time_limit' => 'Вам нельзя слишком часто писать на стене',
 	'wall_add_title' => 'Написать на стене',
 	'wall_add_submit' => 'Отправить',
-	'wall_add_quest' => 'Для возможности оставлять записи на стене необходимо зарегистрироваться.',
+	'wall_add_quest' => 'Оставлять записи на стене могут только зарегистрированные пользователи',
 	'wall_list_empty' => 'Записей на стене нет, вы можете стать первым!',
 	'wall_load_more' => 'К предыдущим записям',
 	'wall_load_reply_more' => 'Показать все',
@@ -606,7 +606,7 @@ return array(
 	'settings_profile_section_base' => 'Основная информация',
 	'settings_profile_section_contacts' => 'Контакты',
 	'settings_profile_name' => 'Имя',
-	'settings_profile_name_notice' => 'Длина имени не может быть меньше 2 и больше 20 символов.',
+	'settings_profile_name_notice' => 'Длина имени не может быть меньше 2 или больше 20 символов.',
 	'settings_profile_mail' => 'E-mail',
 	'settings_profile_mail_error' => 'Неверный формат e-mail',
 	'settings_profile_mail_error_used' => 'Этот емайл уже занят',

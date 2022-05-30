@@ -458,7 +458,7 @@ class Router extends LsObject
          * Если класс экешна начинается с Plugin*_, значит необходимо загрузить объект из указанного плагина
          */
         if (!preg_match('/^Plugin([\w]+)_Action([\w]+)$/i', $sActionClass, $aMatches)) {
-            require_once(Config::Get('path.root.server') . '/classes/actions/' . $sActionClass . '.class.php');
+            require_once(Config::Get('path.root.server') . '/engine/classes/actions/' . $sActionClass . '.class.php');
         } else {
             require_once(Config::Get('path.root.server') . '/plugins/' . strtolower($aMatches[1]) . '/classes/actions/Action' . ucfirst($aMatches[2]) . '.class.php');
         }
