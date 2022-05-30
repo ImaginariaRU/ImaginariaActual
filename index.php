@@ -48,7 +48,12 @@ require_once(Config::Get('path.root.engine')."/classes/Engine.class.php");
 $oProfiler=ProfilerSimple::getInstance(Config::Get('path.root.server').'/logs/'.Config::Get('sys.logs.profiler_file'),Config::Get('sys.logs.profiler'));
 $iTimeId=$oProfiler->Start('full_time');
 
-$oRouter=Router::getInstance();
-$oRouter->Exec();
+try {
+    $oRouter=Router::getInstance();
+    $oRouter->Exec();
+} catch (Exception $e) {
+    dump($e->getMessage());
+    dump($e->getTrace());
+}
 
 $oProfiler->Stop($iTimeId);

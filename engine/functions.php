@@ -569,3 +569,18 @@ if (!function_exists('dd')) {
         die;
     }
 }
+
+if (!function_exists('d')) {
+
+    /**
+     * Dump and die
+     * @param $args
+     */
+    function d(...$args)
+    {
+        echo '<pre>';
+        foreach ($args as $a) {
+            var_dump($a);
+        }
+    }
+}

@@ -345,8 +345,28 @@ class ModulePlugin extends Module
         /**
          * Читаем данные из файла PLUGINS.DAT
          */
-        $aPlugins = @file($this->sPluginsDir . Config::Get('sys.plugins.activation_file'));
-        $aPlugins = (is_array($aPlugins)) ? array_unique(array_map('trim', $aPlugins)) : array();
+        $aPlugins = [];
+
+        $activation_file = $this->sPluginsDir . Config::Get('sys.plugins.activation_file');
+        if (is_readable($activation_file)) {
+            $aPlugins = file($activation_file);
+
+            $aPlugins = array_filter($aPlugins, static function(&$row){
+                if (strpos($row, '#') === 0 || strpos($row, '//') === 0 || empty(trim($row))) {
+                    return false;
+                }
+                return true;
+            });
+
+            $aPlugins = array_map(static function($row) {
+                return trim($row);
+            }, $aPlugins);
+
+            $aPlugins = array_unique($aPlugins);
+        }
+
+        /*$aPlugins = @file($activation_file);
+        $aPlugins = (is_array($aPlugins)) ? array_unique(array_map('trim', $aPlugins)) : array();*/
 
         return $aPlugins;
     }

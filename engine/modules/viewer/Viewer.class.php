@@ -15,7 +15,7 @@
 ---------------------------------------------------------
 */
 
-require_once(Config::Get('path.root.engine') . '/lib/external/Smarty/libs/Smarty.class.php'); // 3.1.8
+// require_once(Config::Get('path.root.engine') . '/lib/external/Smarty/libs/Smarty.class.php'); // 3.1.8
 
 //@todo: new Smarty not compatible with smarty used in LS 1.0.3
 
@@ -23,6 +23,7 @@ require_once(Config::Get('path.root.engine') . '/lib/external/Smarty/libs/Smarty
 // require_once(Config::Get('path.root.engine') . '/lib/external/JSMin-1.1.1/jsmin.php');
 
 use JSMin\JSMin;
+
 
 //@composer: CSSTidy does not have namespace and can be used without additional declarations
 
@@ -220,7 +221,8 @@ class ModuleViewer extends Module
         /**
          * Создаём объект Smarty и устанавливаем необходимые параметры
          */
-        $this->oSmarty = $this->CreateSmartyObject();
+        // $this->oSmarty = $this->CreateSmartyObject();
+        $this->oSmarty = new Smarty();
         $this->oSmarty->error_reporting = error_reporting() & ~E_NOTICE; // подавляем NOTICE ошибки - в этом вся прелесть смарти )
         $this->oSmarty->setTemplateDir(array_merge((array)Config::Get('path.smarty.template'), array(Config::Get('path.root.server') . '/plugins/')));
         $this->oSmarty->compile_check = Config::Get('smarty.compile_check');
@@ -228,11 +230,13 @@ class ModuleViewer extends Module
          * Для каждого скина устанавливаем свою директорию компиляции шаблонов
          */
         $sCompilePath = Config::Get('path.smarty.compiled') . '/' . Config::Get('view.skin');
-        if (!is_dir($sCompilePath)) @mkdir($sCompilePath);
+        if (!is_dir($sCompilePath)) {
+            @mkdir($sCompilePath, 0777, true);
+        }
         $this->oSmarty->setCompileDir($sCompilePath);
         $this->oSmarty->setCacheDir(Config::Get('path.smarty.cache'));
         $this->oSmarty->addPluginsDir(array(Config::Get('path.smarty.plug'), 'plugins'));
-        $this->oSmarty->force_compile = false;
+        $this->oSmarty->force_compile = Config::get('smarty.compile_check');
         $this->oSmarty->default_template_handler_func = array($this, 'SmartyDefaultTemplateHandler');
         /**
          * Получаем настройки JS, CSS файлов
@@ -479,6 +483,7 @@ class ModuleViewer extends Module
      * @param array $aParams Параметры блока, которые будут переданы обработчику блока
      * @param int $iPriority Приоритет, согласно которому сортируются блоки
      * @return bool
+     * @throws Exception
      */
     public function AddBlock($sGroup, $sName, $aParams = array(), $iPriority = 5)
     {
@@ -489,8 +494,9 @@ class ModuleViewer extends Module
         if (!isset($aParams['dir']) and isset($aParams['plugin'])) {
             $aParams['dir'] = Plugin::GetTemplatePath($aParams['plugin']);
         }
+
         /**
-         * Если смогли определить тип блока то добавляем его
+         * Если смогли определить тип блока -- то добавляем его
          */
         $sType = $this->DefineTypeBlock($sName, isset($aParams['dir']) ? $aParams['dir'] : null);
         if ($sType == 'undefined') {
@@ -517,9 +523,12 @@ class ModuleViewer extends Module
      * @param string $sName Название блока
      * @param string|null $sDir Путь до блока, обычно определяется автоматички для плагинов, если передать параметр 'plugin'=>'myplugin'
      * @return string ('block','template','undefined')
+     * @throws Exception
      */
     protected function DefineTypeBlock($sName, $sDir = null)
     {
+        // dump(__FUNCTION__, $sName, $sDir);
+
         if ($this->TemplateExists(is_null($sDir) ? 'blocks/block.' . $sName . '.tpl' : rtrim($sDir, '/') . '/blocks/block.' . $sName . '.tpl')) {
             /**
              * Если найден шаблон вида block.name.tpl то считаем что тип 'block'
@@ -534,7 +543,7 @@ class ModuleViewer extends Module
             /**
              * Считаем что тип не определен
              */
-            throw new Exception('Can not find the block`s template: ' . $sName);
+            throw new Exception("Can not find the block`s template: {$sName} at /{$sDir}/" );
             return 'undefined';
         }
     }
@@ -829,23 +838,29 @@ class ModuleViewer extends Module
         /**
          * Задача: если это файл плагина для текущего шаблона, то смотрим этот же файл шаблона плагина в /default/
          */
+        $template = false;
+
         if (Config::Get('view.skin') != 'default') {
             // /root/plugins/[plugin name]/templates/skin/[skin name]/dir/test.tpl
             if (preg_match('@^' . preg_quote(Config::Get('path.root.server')) . '/plugins/([\w\-_]+)/templates/skin/' . preg_quote(Config::Get('view.skin')) . '/@i', $sName, $aMatch)) {
                 $sFile = str_replace($aMatch[0], Config::Get('path.root.server') . '/plugins/' . $aMatch[1] . '/templates/skin/default/', $sName);
                 if ($this->TemplateExists($sFile)) {
-                    return $sFile;
+                    // return $sFile;
+                    $template = $sFile;
                 }
             }
             // [plugin name]/templates/skin/[skin name]/dir/test.tpl
             if (preg_match('@^([\w\-_]+)/templates/skin/' . preg_quote(Config::Get('view.skin')) . '/@i', $sName, $aMatch)) {
                 $sFile = Config::Get('path.root.server') . '/plugins/' . str_replace($aMatch[0], $aMatch[1] . '/templates/skin/default/', $sName);
                 if ($this->TemplateExists($sFile)) {
-                    return $sFile;
+                    $template = $sFile;
+                    // return $sFile;
                 }
             }
         }
-        return false;
+
+        return $template;
+        // return false;
     }
 
     /**

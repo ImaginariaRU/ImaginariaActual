@@ -16,11 +16,11 @@
 */
 
 /**
- * Добавляет блок(в сайдбар, тулбар и т.п.)
+ * Добавляет блок (в сайдбар, тулбар и т.п.)
  *
- * @param unknown_type $params
- * @param unknown_type $smarty
- * @return unknown
+ * @param array $params
+ * @param Smarty $smarty
+ * @return string|bool
  */
 function smarty_function_add_block($params, &$smarty)
 {
@@ -32,6 +32,13 @@ function smarty_function_add_block($params, &$smarty)
     if (!array_key_exists('name', $params)) {
         trigger_error("add_block: missing 'name' parameter", E_USER_WARNING);
         return;
+    }
+
+    if (!array_key_exists('plugin', $params)) {
+        if (preg_match('/.+\/plugins\/(\w+)\/.+/', $smarty->source->filepath, $matches)) {
+            $params['plugin'] = $matches[1];
+        };
+        // trigger_error("add_block: missing 'plugin' parameter");
     }
 
     $aBlockParams = (isset($params['params']) && is_array($params['params'])) ? $params['params'] : array();

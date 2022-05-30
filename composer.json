@@ -35,7 +35,8 @@
         "curl/curl": "^2.3",
         "ajur-media/fluentpdo": "^1.0",
         "imaginaria/liveimage": "^1.0",
-        "imaginaria/jevix": "^2.3"
+        "imaginaria/jevix": "^2.3",
+        "smarty/smarty": "^4.1"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"
