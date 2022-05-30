@@ -23,6 +23,8 @@
  * @license http://www.yiiframework.com/license/
  */
 
+use Imaginaria\DateTimeParser\DateTimeParser;
+
 /**
  * Валидатор даты
  * Валидатор использует внешний класс DateTimeParser

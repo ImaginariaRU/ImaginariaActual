@@ -90,7 +90,7 @@ class ModulePlugin extends Module
                 /**
                  * Считываем данные из XML файла описания
                  */
-                $sPluginXML = $this->sPluginsDir . $sPlugin . '/' . self::PLUGIN_XML_FILE;
+                $sPluginXML = $this->sPluginsDir . $sPlugin . DIRECTORY_SEPARATOR . self::PLUGIN_XML_FILE;
                 if ($oXml = @simplexml_load_file($sPluginXML)) {
                     /**
                      * Обрабатываем данные, считанные из XML-описания
@@ -116,7 +116,7 @@ class ModulePlugin extends Module
         /**
          * Если нужно сортировать плагины
          */
-        $function_rule_compare_propery_name_data = function ($a, $b) {
+        $function_rule_compare_property_name_data = function ($a, $b) {
             if ((string)$a['property']->name->data == (string)$b['property']->name->data) { return 0; }
             return  ((string)$a['property']->name->data < (string)$b['property']->name->data)
                     ? -1
@@ -126,7 +126,7 @@ class ModulePlugin extends Module
         if (isset($aFilter['order'])) {
             if ($aFilter['order'] == 'name') {
                 $aPlugins = $this->aPluginsList;
-                uasort($aPlugins, $function_rule_compare_propery_name_data);
+                uasort($aPlugins, $function_rule_compare_property_name_data);
                 return $aPlugins;
             }
         }
@@ -154,7 +154,7 @@ class ModulePlugin extends Module
      * Переключает состояние плагина  активный/не активный
      *
      * @param string $sPlugin Название плагина(код)
-     * @param $sAction    Действие - activate/deactivate
+     * @param string $sAction    Действие - activate/deactivate
      * @return null|bool
      */
     public function Toggle($sPlugin, $sAction)

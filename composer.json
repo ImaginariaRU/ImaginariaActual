@@ -36,7 +36,8 @@
         "ajur-media/fluentpdo": "^1.0",
         "imaginaria/liveimage": "^1.0",
         "imaginaria/jevix": "^2.3",
-        "smarty/smarty": "^4.1"
+        "smarty/smarty": "^4.1",
+        "imaginaria/datetimeparser": "^1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"
