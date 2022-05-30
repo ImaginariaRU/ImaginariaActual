@@ -771,7 +771,7 @@ class Engine extends LsObject
                 $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/entity/' . $aInfo[self::CI_ENTITY] . '.entity.class.php';
             } else {
                 // Сущность модуля ядра
-                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/entity/' . $aInfo[self::CI_ENTITY] . '.entity.class.php';
+                $sPath .= 'engine/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/entity/' . $aInfo[self::CI_ENTITY] . '.entity.class.php';
                 if (!is_file($sPath)) {
                     $sPath = str_replace('/classes/modules/', '/engine/modules/', $sPath);
                 }
@@ -783,7 +783,7 @@ class Engine extends LsObject
                 $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/mapper/' . $aInfo[self::CI_MAPPER] . '.mapper.class.php';
             } else {
                 // Маппер модуля ядра
-                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/mapper/' . $aInfo[self::CI_MAPPER] . '.mapper.class.php';
+                $sPath .= 'engine/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/mapper/' . $aInfo[self::CI_MAPPER] . '.mapper.class.php';
                 if (!is_file($sPath)) {
                     $sPath = str_replace('/classes/modules/', '/engine/modules/', $sPath);
                 }
@@ -804,7 +804,7 @@ class Engine extends LsObject
                 $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/' . $aInfo[self::CI_MODULE] . '.class.php';;
             } else {
                 // Модуль ядра
-                $sPath .= 'classes/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/' . $aInfo[self::CI_MODULE] . '.class.php';
+                $sPath .= 'engine/modules/' . strtolower($aInfo[self::CI_MODULE]) . '/' . $aInfo[self::CI_MODULE] . '.class.php';
                 if (!is_file($sPath)) {
                     $sPath = str_replace('/classes/modules/', '/engine/modules/', $sPath);
                 }
