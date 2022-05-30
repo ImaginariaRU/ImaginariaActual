@@ -477,12 +477,12 @@ class Engine extends LsObject
     }
 
     /**
-     * Регистрирует хуки из /classes/hooks/
+     * Регистрирует хуки из /engine/hooks/
      *
      */
     protected function InitHooks()
     {
-        $sDirHooks = Config::Get('path.root.server') . '/classes/hooks/';
+        $sDirHooks = Config::Get('path.root.server') . '/engine/hooks/';
         $aFiles = glob($sDirHooks . 'Hook*.class.php');
 
         if ($aFiles and count($aFiles)) {
@@ -816,7 +816,7 @@ class Engine extends LsObject
                 $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/hooks/Hook' . $aInfo[self::CI_HOOK] . '.class.php';;
             } else {
                 // Хук ядра
-                $sPath .= 'classes/hooks/Hook' . $aInfo[self::CI_HOOK] . '.class.php';
+                $sPath .= 'engine/hooks/Hook' . $aInfo[self::CI_HOOK] . '.class.php';
             }
         } elseif ($aInfo[self::CI_BLOCK]) {
             // Блок
