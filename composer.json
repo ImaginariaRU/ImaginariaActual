@@ -41,6 +41,9 @@
         "roave/security-advisories": "dev-latest"
     },
     "autoload": {
+        "files": [
+            "engine/functions.php"
+        ],
         "psr-4": {
         }
     }

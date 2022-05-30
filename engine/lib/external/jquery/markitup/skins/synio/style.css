@@ -2,8 +2,8 @@
 // markItUp! Universal MarkUp Engine, JQuery plugin
 // By Jay Salvat - http: //markitup.jaysalvat.com/
 // ------------------------------------------------------------------*/
-.markItUp a: link,
-.markItUp a: visited { color: #000; text-decoration: none; }
+.markItUp a:link,
+.markItUp a:visited { color: #000; text-decoration: none; }
 .markItUp  { margin-bottom: 5px; }
 .markItUpContainer { font: 11px Verdana, Arial, Helvetica, sans-serif; }
 .markItUpEditor {
@@ -59,7 +59,7 @@
 	*display: inline; /* ie <= 7 */
 }
 .markItUpHeader ul li	{ list-style: none; float: left; position: relative; margin-right: 10px; }
-.markItUpHeader ul li: hover > ul{ display: block; }
+.markItUpHeader ul li:hover > ul{ display: block; }
 .markItUpHeader ul .markItUpDropMenu {
 	background: transparent url(images/menu.png) no-repeat 115% 50%;
 	margin-right: 5px;

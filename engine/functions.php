@@ -56,7 +56,7 @@ function isAjaxRequest()
 /**
  * функция вывода отладочных сообщений через "хакерскую" консоль Дмитрия Котерова
  */
-function dump($msg)
+function hack_dump($msg)
 {
     if (Config::Get('sys.logs.hacker_console') && !isAjaxRequest()) {
         if (!class_exists('Debug_HackerConsole_Main')) {
@@ -74,9 +74,9 @@ function dump($msg)
 /**
  * функция доступа к GET POST параметрам
  *
- * @param  string $sName
- * @param  mixed $default
- * @param  string $sType
+ * @param string $sName
+ * @param mixed $default
+ * @param string $sType
  * @return mixed
  */
 function getRequest($sName, $default = null, $sType = null)
@@ -124,7 +124,7 @@ function getRequestStr($sName, $default = null, $sType = null)
 /**
  * Определяет был ли передан указанный параметр методом POST
  *
- * @param  string $sName
+ * @param string $sName
  * @return bool
  */
 function isPost($sName)
@@ -293,7 +293,7 @@ function func_mkdir($sBasePath, $sNewDir)
 /**
  * Рекурсивное удаление директории (со всем содержимым)
  *
- * @param  string $sPath
+ * @param string $sPath
  * @return bool
  */
 function func_rmdir($sPath)
@@ -334,7 +334,7 @@ function func_text_words($sText, $iCountWords)
  *
  * @param array $array
  * @param string $sBefore
- * @param string$sAfter
+ * @param string $sAfter
  * @return array
  */
 function func_array_change_value($array, $sBefore = '', $sAfter = '')

@@ -31,6 +31,8 @@ chdir($LIVESTREET_INSTALL_PATH);
 /*if (isset( $_REQUEST[ 'sid' ] )) { session_id( $_REQUEST[ 'sid' ] ); }
 session_start();*/
 
+require_once 'vendor/autoload.php';
+
 // Получаем объект конфигурации
 require_once("./config/loader.php");
 
@@ -38,8 +40,6 @@ require_once("./config/loader.php");
  * Заводим двигатель
  */
 require_once(Config::Get('path.root.engine')."/classes/Engine.class.php");
-
-require_once 'vendor/autoload.php';
 
 // use \Monolog\Handler\FilterHandler;
 // use \Monolog\Logger;

@@ -16,7 +16,7 @@
  
 class Debug_HackerConsole_Main
 {
-    var $_hc_height = "400"; // height of the console (pixels)
+    public $_hc_height = "400"; // height of the console (pixels)
     var $_hc_entries = array();
     var $TAB_SIZE = 4;
 
@@ -41,7 +41,7 @@ class Debug_HackerConsole_Main
     function attachToHtml($page)
     {
         $js = implode("", file(dirname(__FILE__).'/Js.js'));
-        if (get_magic_quotes_runtime()) $js = stripslashes($js);
+        /*if (get_magic_quotes_runtime()) */$js = stripslashes($js);
         $js = str_replace('{HEIGHT}', $this->_hc_height, $js);
         // We MUST use "hackerConsole" instead of "console" because of Safari.
         $code = "window.hackerConsole = window.hackerConsole || window.Debug_HackerConsole_Js && new window.Debug_HackerConsole_Js();\n";

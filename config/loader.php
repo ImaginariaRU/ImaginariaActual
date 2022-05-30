@@ -79,7 +79,7 @@ Config::Set("module.search", [
 /**
  * Инклудим все *.php файлы из каталога {path.root.engine}/include/ - это файлы ядра
  */
-$sDirInclude = Config::get('path.root.engine') . '/include/';
+/*$sDirInclude = Config::get('path.root.engine') . '/include/';
 if ($hDirInclude = opendir($sDirInclude)) {
     while (false !== ($sFileInclude = readdir($hDirInclude))) {
         $sFileIncludePathFull = $sDirInclude . $sFileInclude;
@@ -91,7 +91,7 @@ if ($hDirInclude = opendir($sDirInclude)) {
         }
     }
     closedir($hDirInclude);
-}
+}*/
 
 /**
  * Инклудим все *.php файлы из каталога {path.root.server}/include/ - пользовательские файлы
