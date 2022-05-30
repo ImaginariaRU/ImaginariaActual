@@ -365,9 +365,6 @@ class ModulePlugin extends Module
             $aPlugins = array_unique($aPlugins);
         }
 
-        /*$aPlugins = @file($activation_file);
-        $aPlugins = (is_array($aPlugins)) ? array_unique(array_map('trim', $aPlugins)) : array();*/
-
         return $aPlugins;
     }
 
