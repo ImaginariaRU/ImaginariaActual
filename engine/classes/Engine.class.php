@@ -825,7 +825,7 @@ class Engine extends LsObject
                 $sPath .= 'plugins/' . func_underscore($aInfo[self::CI_PLUGIN]) . '/classes/blocks/Block' . $aInfo[self::CI_BLOCK] . '.class.php';;
             } else {
                 // Блок ядра
-                $sPath .= 'classes/blocks/Block' . $aInfo[self::CI_BLOCK] . '.class.php';
+                $sPath .= 'engine/blocks/Block' . $aInfo[self::CI_BLOCK] . '.class.php';
             }
         } elseif ($aInfo[self::CI_PLUGIN]) {
             // Плагин
