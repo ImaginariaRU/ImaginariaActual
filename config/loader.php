@@ -98,7 +98,7 @@ if ($hDirInclude = opendir($sDirInclude)) {
  *
  * @todo: перенести все эти файлы в /engine/include/
  */
-$sDirInclude = Config::get('path.root.server') . '/include/';
+/*$sDirInclude = Config::get('path.root.server') . '/include/';
 if ($hDirInclude = opendir($sDirInclude)) {
     while (false !== ($sFileInclude = readdir($hDirInclude))) {
         $sFileIncludePathFull = $sDirInclude . $sFileInclude;
@@ -110,7 +110,7 @@ if ($hDirInclude = opendir($sDirInclude)) {
         }
     }
     closedir($hDirInclude);
-}
+}*/
 
 /**
  * Ищет routes-конфиги модулей и объединяет их с текущим
