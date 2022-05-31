@@ -39,7 +39,8 @@
         "imaginaria/jevix": "^2.3",
         "smarty/smarty": "^4.1",
         "imaginaria/datetimeparser": "^1.0",
-        "imaginaria/dbsimple": "^1.1.0"
+        "imaginaria/dbsimple": "^1.1.0",
+        "phpmailer/phpmailer": "^6.6"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"

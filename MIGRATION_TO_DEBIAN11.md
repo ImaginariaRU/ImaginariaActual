@@ -21,6 +21,8 @@ ALTER TABLE ls_comment MODIFY COLUMN comment_edit_count int(11) DEFAULT 0 NULL;
 
 livestreet/dklabcache                           вместо  /var/www.imaginaria/imaginaria.actual/engine/lib/external/DklabCache
 
+Пока не заменяем
+
 ## Hacker Console
 
 composer require mr-lexx/hacker-console         вместо  /var/www.imaginaria/imaginaria.actual/engine/lib/external/HackerConsole
@@ -31,7 +33,7 @@ composer require ganlvtech/kcaptcha             вместо /var/www.imaginaria
 
 ## PHPMailer
 
-composer require phpmailer/phpmailer            вместо phpMailer
+Заменено на phpmailer/phpmailer
 
 
 

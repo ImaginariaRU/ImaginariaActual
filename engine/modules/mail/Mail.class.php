@@ -17,7 +17,8 @@
 ---------------------------------------------------------
 */
 
-require_once(Config::Get('path.root.engine') . '/lib/external/phpMailer/class.phpmailer.php');
+// require_once(Config::Get('path.root.engine') . '/lib/external/phpMailer/class.phpmailer.php');
+use PHPMailer\PHPMailer\PHPMailer;
 
 /**
  * Модуль для отправки почты(e-mail) через phpMailer
@@ -37,7 +38,7 @@ class ModuleMail extends Module
     /**
      * Основной объект рассылбщика
      *
-     * @var phpmailer
+     * @var PHPMailer
      */
     protected $oMailer;
     /**
@@ -165,7 +166,7 @@ class ModuleMail extends Module
         /**
          * Создаём объект phpMailer и устанвливаем ему необходимые настройки
          */
-        $this->oMailer = new phpmailer();
+        $this->oMailer = new PHPMailer();
         $this->oMailer->Host = $this->sHost;
         $this->oMailer->Port = $this->iPort;
         $this->oMailer->Username = $this->sUsername;
@@ -242,6 +243,7 @@ class ModuleMail extends Module
      *
      * @param string $sMail Емайл
      * @param string $sName Имя
+     * @throws \PHPMailer\PHPMailer\Exception
      */
     public function SetAdress($sMail, $sName = null)
     {

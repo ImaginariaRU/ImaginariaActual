@@ -647,7 +647,7 @@ class Engine extends LsObject
      * Например <pre>Openid</pre>
      *
      * @static
-     * @param Module $oModule Объект модуля
+     * @param string $oModule Объект модуля
      * @return string|null
      */
     public static function GetPluginName($oModule)
