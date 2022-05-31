@@ -59,14 +59,9 @@ function isAjaxRequest()
 function hack_dump($msg)
 {
     if (Config::Get('sys.logs.hacker_console') && !isAjaxRequest()) {
-        if (!class_exists('Debug_HackerConsole_Main')) {
-            require_once Config::Get('path.root.server') . "/engine/lib/external/HackerConsole/Main.php";
-            new Debug_HackerConsole_Main(true);
-        }
-        call_user_func(array('Debug_HackerConsole_Main', 'out'), $msg);
+        HackerConsole::getInstance(true)->out($msg);
     } else {
-        //@todo: monolog
-        //var_dump($msg);
+        //@todo: AppLogger logging
     }
 }
 
