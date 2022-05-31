@@ -66,14 +66,12 @@ class Config
      * @param string $sName Название инстанции конфига
      * @return Config
      */
-    static public function getInstance($sName = self::DEFAULT_CONFIG_INSTANCE)
+    static public function getInstance(string $sName = self::DEFAULT_CONFIG_INSTANCE)
     {
-        if (isset(self::$aInstance[$sName])) {
-            return self::$aInstance[$sName];
-        } else {
+        if (!isset(self::$aInstance[$sName])) {
             self::$aInstance[$sName] = new self();
-            return self::$aInstance[$sName];
         }
+        return self::$aInstance[$sName];
     }
 
     /**
@@ -91,6 +89,7 @@ class Config
         if (!file_exists($sFile)) {
             return false;
         }
+
         // Get config from file
         $aConfig = include($sFile);
         return self::Load($aConfig, $bRewrite, $sInstance);
