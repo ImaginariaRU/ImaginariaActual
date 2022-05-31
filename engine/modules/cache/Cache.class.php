@@ -15,12 +15,6 @@
 ---------------------------------------------------------
 */
 
-/*require_once(Config::Get('path.root.engine').'/lib/external/DklabCache/config.php');
-require_once(LS_DKCACHE_PATH.'Zend/Cache.php');
-require_once(LS_DKCACHE_PATH.'Cache/Backend/MemcachedMultiload.php');
-require_once(LS_DKCACHE_PATH.'Cache/Backend/TagEmuWrapper.php');
-require_once(LS_DKCACHE_PATH.'Cache/Backend/Profiler.php');*/
-
 /**
  * Типы кеширования: file и memory
  *

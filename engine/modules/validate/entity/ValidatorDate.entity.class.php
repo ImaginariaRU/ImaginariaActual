@@ -63,8 +63,6 @@ class ModuleValidate_EntityValidatorDate extends ModuleValidate_EntityValidator
             return true;
         }
 
-        require_once(Config::Get('path.root.engine') . '/lib/external/DateTime/DateTimeParser.php');
-
         $aFormats = is_string($this->format) ? array($this->format) : $this->format;
         $bValid = false;
         foreach ($aFormats as $sFormat) {

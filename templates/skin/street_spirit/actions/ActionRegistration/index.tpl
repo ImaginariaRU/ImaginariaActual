@@ -89,8 +89,8 @@
 		<dl class="form-item">
 			<dt><label for="registration-user-captcha">{$aLang.registration_captcha}:</label></dt>
 			<dd>
-				<img src="{cfg name='path.root.engine_lib'}/external/kcaptcha/index.php?{$_sPhpSessionName}={$_sPhpSessionId}" 
-					 onclick="this.src='{cfg name='path.root.engine_lib'}/external/kcaptcha/index.php?{$_sPhpSessionName}={$_sPhpSessionId}&n='+Math.random();" 
+				<img src="{cfg name='path.root.engine_lib'}/kcaptcha/index.php?{$_sPhpSessionName}={$_sPhpSessionId}"
+					 onclick="this.src='{cfg name='path.root.engine_lib'}/kcaptcha/index.php?{$_sPhpSessionName}={$_sPhpSessionId}&n='+Math.random();"
 					 class="captcha-image" />
 				<input type="text" name="captcha" id="registration-user-captcha" value="" maxlength="3" class="input-text input-width-100 js-ajax-validate" style="width: 165px" />
 				<small class="validate-error-hide validate-error-field-captcha"></small>

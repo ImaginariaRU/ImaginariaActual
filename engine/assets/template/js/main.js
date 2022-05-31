@@ -190,7 +190,7 @@ ls.swfupload = (function ($) {
             button_cursor: SWFUpload.CURSOR.HAND,
 
             // Flash Settings
-            flash_url: DIR_ROOT_ENGINE_LIB + '/external/swfupload/swfupload.swf',
+            flash_url: DIR_ROOT_ENGINE + '/assets/swfupload/swfupload.swf',
 
             custom_settings: {},
 
@@ -211,7 +211,7 @@ ls.swfupload = (function ($) {
             } else {
                 ls.debug('window.swfobject && swfobject.swfupload is undefined, load swfobject/plugin/swfupload.js');
                 $.getScript(
-                    DIR_ROOT_ENGINE_LIB + '/external/swfobject/plugin/swfupload.js',
+                    DIR_ROOT_ENGINE + '/assets/swfobject/plugin/swfupload.js',
                     f.onSwfobjectSwfupload
                 );
             }
@@ -223,7 +223,7 @@ ls.swfupload = (function ($) {
             } else {
                 ls.debug('window.SWFUpload is undefined, load swfupload/swfupload.js');
                 $.getScript(
-                    DIR_ROOT_ENGINE_LIB + '/external/swfupload/swfupload.js',
+                    DIR_ROOT_ENGINE + '/assets/swfupload/swfupload.js',
                     f.onSwfupload
                 );
             }
@@ -241,7 +241,7 @@ ls.swfupload = (function ($) {
             } else {
                 ls.debug('window.swfobject is undefined, load swfobject/swfobject.js');
                 $.getScript(
-                    DIR_ROOT_ENGINE_LIB + '/external/swfobject/swfobject.js',
+                    DIR_ROOT_ENGINE + '/assets/swfobject/swfobject.js',
                     f.onSwfobject
                 );
             }

@@ -17,7 +17,6 @@
 ---------------------------------------------------------
 */
 
-// require_once(Config::Get('path.root.engine') . '/lib/external/phpMailer/class.phpmailer.php');
 use PHPMailer\PHPMailer\PHPMailer;
 
 /**

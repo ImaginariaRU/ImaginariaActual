@@ -46,8 +46,8 @@
 
 
 {if !$bTopicList}
-	<script type="text/javascript" src="{cfg name='path.root.engine_lib'}/external/prettyPhoto/js/prettyPhoto.js"></script>	
-	<link rel='stylesheet' type='text/css' href="{cfg name='path.root.engine_lib'}/external/prettyPhoto/css/prettyPhoto.css" />
+	<script type="text/javascript" src="{cfg name='path.root.engine'}/assets/prettyPhoto/js/prettyPhoto.js"></script>
+	<link rel='stylesheet' type='text/css' href="{cfg name='path.root.engine'}/assets/prettyPhoto/css/prettyPhoto.css" />
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {	
 			$('.photoset-image').prettyPhoto({

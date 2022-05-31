@@ -15,15 +15,7 @@
 ---------------------------------------------------------
 */
 
-// require_once(Config::Get('path.root.engine') . '/lib/external/Smarty/libs/Smarty.class.php'); // 3.1.8
-
-//@todo: new Smarty not compatible with smarty used in LS 1.0.3
-
-// require_once(Config::Get('path.root.engine') . '/lib/external/CSSTidy/class.csstidy.php');
-// require_once(Config::Get('path.root.engine') . '/lib/external/JSMin-1.1.1/jsmin.php');
-
 use JSMin\JSMin;
-
 
 //@composer: CSSTidy does not have namespace and can be used without additional declarations
 
