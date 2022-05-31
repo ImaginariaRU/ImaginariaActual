@@ -23,7 +23,7 @@ define('LS_VERSION', '1.0.5');
 /**
  * Operations with Config object
  */
-require_once(dirname(dirname(__FILE__)) . "/engine/lib/internal/ConfigSimple/Config.class.php");
+require_once(dirname(dirname(__FILE__)) . "/engine/lib/ConfigSimple/Config.class.php");
 Config::LoadFromFile(dirname(__FILE__) . '/config.php');
 
 $fGetConfig = function ($sPath) {
