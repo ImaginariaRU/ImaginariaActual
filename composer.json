@@ -19,6 +19,7 @@
         "ext-gd": "*",
         "ext-readline": "*",
         "ext-simplexml": "*",
+        "ext-pgsql": "*",
         "psr/log": "^1.1",
         "karelwintersky/arris": "^1.70",
         "karelwintersky/arris.cache": "^0.5.2",
@@ -37,7 +38,8 @@
         "imaginaria/liveimage": "^1.0",
         "imaginaria/jevix": "^2.3",
         "smarty/smarty": "^4.1",
-        "imaginaria/datetimeparser": "^1.0"
+        "imaginaria/datetimeparser": "^1.0",
+        "imaginaria/dbsimple": "^1.1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"

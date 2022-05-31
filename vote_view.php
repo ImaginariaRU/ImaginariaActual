@@ -14,6 +14,8 @@ if (false === $LIVESTREET_INSTALL_PATH) {
 set_include_path(get_include_path().PATH_SEPARATOR.$LIVESTREET_INSTALL_PATH);
 chdir($LIVESTREET_INSTALL_PATH);
 
+require_once __DIR__. '/vendor/autoload.php';
+
 // Получаем объект конфигурации
 require_once("./config/loader.php");
 

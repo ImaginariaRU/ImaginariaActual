@@ -12,7 +12,6 @@
  */
 class ModuleDatabase_DbSimpleWrapper
 {
-
     const REPLICA_TYPE_MASTER = 1;
     const REPLICA_TYPE_SLAVE = 2;
 

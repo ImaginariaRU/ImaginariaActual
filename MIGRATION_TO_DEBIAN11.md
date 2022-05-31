@@ -7,18 +7,29 @@ ALTER TABLE ls_wall MODIFY COLUMN ip varchar(20) CHARACTER SET utf8 COLLATE utf8
 
 ALTER TABLE ls_comment MODIFY COLUMN comment_edit_count int(11) DEFAULT 0 NULL;
 
-# Пакеты сделанные, но не внедренные
+# Замененные пакеты
 
-composer require imaginaria/datetimeparser      вместо  /var/www.imaginaria/imaginaria.actual/engine/lib/external/DateTime/DateTimeParser.php
+## DateTimeParser
 
-composer require ivan1986/dbsimple              вместо  /var/www.imaginaria/imaginaria.actual/engine/lib/external/DbSimple                          ???
-composer require livestreet/dbsimple        
+Заменено на imaginaria/datetimeparser
+
+## DBSimple 
+
+Заменено на imaginaria/dbsimple 
+
+## DkLabCache
 
 livestreet/dklabcache                           вместо  /var/www.imaginaria/imaginaria.actual/engine/lib/external/DklabCache
 
+## Hacker Console
+
 composer require mr-lexx/hacker-console         вместо  /var/www.imaginaria/imaginaria.actual/engine/lib/external/HackerConsole
 
+## KCaptcha
+
 composer require ganlvtech/kcaptcha             вместо /var/www.imaginaria/imaginaria.actual/engine/lib/external/kcaptcha (только нужны доработки -> ajur-media/kcaptcha)
+
+## PHPMailer
 
 composer require phpmailer/phpmailer            вместо phpMailer
 
