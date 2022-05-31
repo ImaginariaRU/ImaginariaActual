@@ -30,7 +30,7 @@ class PluginChangemail_ActionSettings extends PluginChangemail_Inherit_ActionSet
         if (isset($sChangeMailTo)) {
 
             $oChangeMail = Engine::GetEntity('PluginChangemail_ModuleUser_EntityChangemail');
-            $oChangeMail->setCode(func_generator(32));
+            $oChangeMail->setCode(generateRandomString(32));
             $oChangeMail->setDateAdd(date("Y-m-d H:i:s"));
             $oChangeMail->setDateExpire(date("Y-m-d H:i:s", time() + 60 * 60 * 24 * 7));
             $oChangeMail->setDateUsed(null);

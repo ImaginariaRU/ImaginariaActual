@@ -877,7 +877,7 @@ class ModuleBlog extends Module
             return false;
         }
 
-        $sFileTmp = Config::Get('sys.cache.dir') . func_generator();
+        $sFileTmp = Config::Get('sys.cache.dir') . generateRandomString();
         if (!move_uploaded_file($aFile['tmp_name'], $sFileTmp)) {
             return false;
         }

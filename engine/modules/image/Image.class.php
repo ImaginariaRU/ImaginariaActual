@@ -208,7 +208,7 @@ class ModuleImage extends Module
                 $oImage->set_jpg_quality($aParams['jpg_quality']);
             }
 
-            $sFileTmp = Config::Get('sys.cache.dir') . func_generator(20);
+            $sFileTmp = Config::Get('sys.cache.dir') . generateRandomString(20);
             $oImage->output(null, $sFileTmp);
             return $this->SaveFile($sFileTmp, $sDirDest, $sFileDest, 0666, true);
         } else {
@@ -417,7 +417,8 @@ class ModuleImage extends Module
      */
     public function GetIdDir($sId)
     {
-        return Config::Get('path.uploads.images') . '/' . preg_replace('~(.{2})~U', "\\1/", str_pad($sId, 6, "0", STR_PAD_LEFT)) . date('Y/m/d');
+        // return Config::Get('path.uploads.images') . '/' . preg_replace('~(.{2})~U', "\\1/", str_pad($sId, 6, "0", STR_PAD_LEFT)) . date('Y/m/d');
+        return Config::Get('path.uploads.images') . DIRECTORY_SEPARATOR . "users/{$sId}/" .date('Y/m/d');
     }
 
     /**

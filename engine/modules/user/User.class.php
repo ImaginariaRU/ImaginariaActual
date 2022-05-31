@@ -551,7 +551,7 @@ class ModuleUser extends Module
          * Генерим новый ключ авторизаии для куков
          */
         if (is_null($sKey)) {
-            $sKey = md5(func_generator() . time() . $oUser->getLogin());
+            $sKey = md5(generateRandomString() . time() . $oUser->getLogin());
         }
         /**
          * Создаём новую сессию
@@ -1043,7 +1043,7 @@ class ModuleUser extends Module
     public function GenerateInvite($oUser)
     {
         $oInvite = Engine::GetEntity('User_Invite');
-        $oInvite->setCode(func_generator(32));
+        $oInvite->setCode(generateRandomString(32));
         $oInvite->setDateAdd(date("Y-m-d H:i:s"));
         $oInvite->setUserFromId($oUser->getId());
         return $this->AddInvite($oInvite);
@@ -1359,7 +1359,7 @@ class ModuleUser extends Module
             $oImage->output(null, $sFileTmp);
         }
 
-        if ($sFileFoto = $this->Image_Resize($sFileTmp, $sDirUpload, func_generator(6), Config::Get('view.img_max_width'), Config::Get('view.img_max_height'), Config::Get('module.user.profile_photo_width'), null, true, $aParams)) {
+        if ($sFileFoto = $this->Image_Resize($sFileTmp, $sDirUpload, generateRandomString(6), Config::Get('view.img_max_width'), Config::Get('view.img_max_height'), Config::Get('module.user.profile_photo_width'), null, true, $aParams)) {
             @unlink($sFileTmp);
             /**
              * удаляем старое фото
@@ -1681,8 +1681,8 @@ class ModuleUser extends Module
         $oChangemail->setDateExpired(date("Y-m-d H:i:s", time() + 3 * 24 * 60 * 60)); // 3 дня для смены емайла
         $oChangemail->setMailFrom($oUser->getMail() ? $oUser->getMail() : '');
         $oChangemail->setMailTo($sMailNew);
-        $oChangemail->setCodeFrom(func_generator(32));
-        $oChangemail->setCodeTo(func_generator(32));
+        $oChangemail->setCodeFrom(generateRandomString(32));
+        $oChangemail->setCodeTo(generateRandomString(32));
         if ($this->AddUserChangemail($oChangemail)) {
             /**
              * Если у пользователя раньше не было емайла, то сразу шлем подтверждение на новый емайл

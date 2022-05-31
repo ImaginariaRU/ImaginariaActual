@@ -137,7 +137,7 @@ class ActionSettings extends Action
         /**
          * Копируем загруженный файл
          */
-        $sFileTmp = Config::Get('sys.cache.dir') . func_generator();
+        $sFileTmp = Config::Get('sys.cache.dir') . generateRandomString();
         if (!move_uploaded_file($_FILES['foto']['tmp_name'], $sFileTmp)) {
             return false;
         }
@@ -286,7 +286,7 @@ class ActionSettings extends Action
         /**
          * Копируем загруженный файл
          */
-        $sFileTmp = Config::Get('sys.cache.dir') . func_generator();
+        $sFileTmp = Config::Get('sys.cache.dir') . generateRandomString();
         if (!move_uploaded_file($_FILES['avatar']['tmp_name'], $sFileTmp)) {
             return false;
         }

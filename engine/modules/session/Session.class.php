@@ -172,7 +172,7 @@ class ModuleSession extends Module
      */
     protected function GenerateId()
     {
-        return md5(func_generator() . time());
+        return md5(generateRandomString() . time());
     }
 
     /**

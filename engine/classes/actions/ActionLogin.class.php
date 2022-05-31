@@ -127,7 +127,7 @@ class ActionLogin extends Action
                 $this->Message_AddErrorSingle($this->Lang_Get('registration_activate_error_reactivate'));
                 return;
             } else {
-                $oUser->setActivateKey(md5(func_generator() . time()));
+                $oUser->setActivateKey(md5(generateRandomString() . time()));
                 if ($this->User_Update($oUser)) {
                     $this->Message_AddNotice($this->Lang_Get('reactivation_send_link'));
                     $this->Notify_SendReactivationCode($oUser);
@@ -183,7 +183,7 @@ class ActionLogin extends Action
              * Формируем и отправляем ссылку на смену пароля
              */
             $oReminder = Engine::GetEntity('User_Reminder');
-            $oReminder->setCode(func_generator(32));
+            $oReminder->setCode(generateRandomString(32));
             $oReminder->setDateAdd(date("Y-m-d H:i:s"));
             $oReminder->setDateExpire(date("Y-m-d H:i:s", time() + 60 * 60 * 24 * 7));
             $oReminder->setDateUsed(null);
@@ -217,7 +217,7 @@ class ActionLogin extends Action
              */
             if ($oReminder = $this->User_GetReminderByCode($this->GetParam(0))) {
                 if (!$oReminder->getIsUsed() and strtotime($oReminder->getDateExpire()) > time() and $oUser = $this->User_GetUserById($oReminder->getUserId())) {
-                    $sNewPassword = func_generator(7);
+                    $sNewPassword = generateRandomString(7);
                     $oUser->setPassword(func_encrypt($sNewPassword));
                     if ($this->User_Update($oUser)) {
                         $oReminder->setDateUsed(date("Y-m-d H:i:s"));

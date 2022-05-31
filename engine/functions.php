@@ -133,7 +133,7 @@ function isPost($sName)
  * @param int $iLength
  * @return string
  */
-function func_generator($iLength = 10)
+function generateRandomString($iLength = 10)
 {
     if ($iLength > 32) {
         $iLength = 32;

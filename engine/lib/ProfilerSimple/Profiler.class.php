@@ -73,7 +73,7 @@ class ProfilerSimple {
 	protected function __construct($sFileName,$bEnable) {
 		$this->bEnable=$bEnable;
 		$this->sFileName=$sFileName;
-		$this->sRequestId=func_generator(32);
+		$this->sRequestId=generateRandomString(32);
 		$this->iTimeId=0;
 	}
 	/**

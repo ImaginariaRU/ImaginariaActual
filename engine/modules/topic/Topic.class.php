@@ -1786,14 +1786,14 @@ class ModuleTopic extends Module
             return false;
         }
 
-        $sFileTmp = Config::Get('sys.cache.dir') . func_generator();
+        $sFileTmp = Config::Get('sys.cache.dir') . generateRandomString();
         if (!move_uploaded_file($aFile['tmp_name'], $sFileTmp)) {
             return false;
         }
         $sDirUpload = $this->Image_GetIdDir($oUser->getId());
         $aParams = $this->Image_BuildParams('topic');
 
-        if ($sFileImage = $this->Image_Resize($sFileTmp, $sDirUpload, func_generator(6), Config::Get('view.img_max_width'), Config::Get('view.img_max_height'), Config::Get('view.img_resize_width'), null, true, $aParams)) {
+        if ($sFileImage = $this->Image_Resize($sFileTmp, $sDirUpload, generateRandomString(6), Config::Get('view.img_max_width'), Config::Get('view.img_max_height'), Config::Get('view.img_resize_width'), null, true, $aParams)) {
             @unlink($sFileTmp);
             return $this->Image_GetWebPath($sFileImage);
         }
@@ -1843,7 +1843,7 @@ class ModuleTopic extends Module
         /**
          * Создаем tmp-файл, для временного хранения изображения
          */
-        $sFileTmp = Config::Get('sys.cache.dir') . func_generator();
+        $sFileTmp = Config::Get('sys.cache.dir') . generateRandomString();
 
         $fp = fopen($sFileTmp, 'w');
         fwrite($fp, $sContent);
@@ -1854,7 +1854,7 @@ class ModuleTopic extends Module
         /**
          * Передаем изображение на обработку
          */
-        if ($sFileImg = $this->Image_Resize($sFileTmp, $sDirSave, func_generator(), Config::Get('view.img_max_width'), Config::Get('view.img_max_height'), Config::Get('view.img_resize_width'), null, true, $aParams)) {
+        if ($sFileImg = $this->Image_Resize($sFileTmp, $sDirSave, generateRandomString(), Config::Get('view.img_max_width'), Config::Get('view.img_max_height'), Config::Get('view.img_resize_width'), null, true, $aParams)) {
             @unlink($sFileTmp);
             return $this->Image_GetWebPath($sFileImg);
         }
@@ -1950,7 +1950,7 @@ class ModuleTopic extends Module
             return false;
         }
 
-        $sFileName = func_generator(10);
+        $sFileName = generateRandomString(10);
         $sPath = Config::Get('path.uploads.images') . '/topic/' . date('Y/m/d') . '/';
 
         if (!is_dir(Config::Get('path.root.server') . $sPath)) {
@@ -1984,6 +1984,7 @@ class ModuleTopic extends Module
             @unlink($sFileTmp);
             return false;
         }
+
         /**
          * Добавляем к загруженному файлу расширение
          */

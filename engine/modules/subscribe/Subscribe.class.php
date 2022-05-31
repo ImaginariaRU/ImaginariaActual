@@ -176,7 +176,7 @@ class ModuleSubscribe extends Module
             $oSubscribe->setTargetId($sTargetId);
             $oSubscribe->setMail($sMail);
             $oSubscribe->setDateAdd(date("Y-m-d H:i:s"));
-            $oSubscribe->setKey(func_generator(32));
+            $oSubscribe->setKey(generateRandomString(32));
             $oSubscribe->setIp(func_getIp());
             $oSubscribe->setStatus(1);
             $this->Subscribe_AddSubscribe($oSubscribe);

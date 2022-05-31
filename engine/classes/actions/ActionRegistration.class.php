@@ -180,7 +180,7 @@ class ActionRegistration extends Action
          */
         if (Config::Get('general.reg.activation')) {
             $oUser->setActivate(0);
-            $oUser->setActivateKey(md5(func_generator() . time()));
+            $oUser->setActivateKey(md5(generateRandomString() . time()));
         } else {
             $oUser->setActivate(1);
             $oUser->setActivateKey(null);
