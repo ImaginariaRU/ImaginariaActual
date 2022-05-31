@@ -1,0 +1,47 @@
+/* add left border for all comments */
+div.comment-wrapper, section.comment {
+    border-left: 1px dashed #e0e0e0;
+}
+
+/*
+Выделение особым стилем комментариев администратора и топикстартера
+Правило .comment.comment-admin .comment-content описывает область контента комментария, для него мы меняли цвет рамки:
+border-color: indianred !important; (админ)
+border-color: #0e90d2; (топикстартер)
+
+По просьбе сторонников цветовой дифференциации штанов мы от рамки отказываемся и подсвечиваем иначе никнейм
+ */
+
+/*
+.comment.comment-admin .comment-info .comment-author {
+    background-color: rgba(65, 40, 177, 0.1) !important;
+    background-color: #DA4242 !important;
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.comment.comment-topicstarter .comment-info .comment-author {
+    background-color: rgba(14, 144, 210, 0.1);
+    padding-left: 7px;
+    padding-right: 7px;
+}
+*/
+
+/* Есть еще вариант сделать бордер вокруг аватарки : .comment-avatar */
+/*
+.comment.comment-admin .comment-avatar {
+    outline: 2px solid red;
+}
+.comment.comment-topicstarter .comment-avatar {
+    outline: 2px solid blue;
+}
+*/
+
+/* Ну и наконец, 3 вариант - меняем цвет только левой границы окна контента */
+.comment.comment-topicstarter .comment-content {
+    border-left-color: #0e90d2 !important;
+}
+.comment.comment-admin .comment-content {
+    border-left-color: indianred !important;
+}
+

@@ -1,0 +1,50 @@
+#!/bin/sh
+
+FLAG_CONFIG="-"
+
+set -e
+ANSI_RED='\033[0;31m'
+ANSI_GREEN='\033[0;32m'
+ANSI_YELLOW='\033[1;33m'
+ANSI_RESET='\033[0m'
+
+PATH_PROJECT=/var/www/imaginaria
+
+PATH_CONFIG=/var/www/imaginaria/config
+
+case "$1" in
+    configure)
+        echo "\n ${ANSI_YELLOW} Running IMAGINARIA post-install... ${ANSI_RESET} \n"
+
+        echo "Checking CONFIG.LOCAL.PHP"
+        if [ -e "${PATH_CONFIG}/config.local.php" ]; then
+            echo "config.local.php ${ANSI_GREEN}file found ${ANSI_RESET}";
+            FLAG_CONFIG="${FLAG_CONFIG}+";
+        else
+            echo "config.local.php ${ANSI_RED} file not found! ${ANSI_RESET}" ;
+        fi
+
+        echo
+        echo "Running postinstall tasks..."
+
+        echo "Fixing access rights..."
+        chown -R www-data:www-data ${PATH_PROJECT}/*
+        echo "${ANSI_GREEN} Ok. ${ANSI_RESET}"
+
+        echo
+        echo "${ANSI_YELLOW} ... post-install finished. ${ANSI_RESET}"
+        echo
+    ;;
+
+    abort-upgrade|abort-remove|abort-deconfigure)
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

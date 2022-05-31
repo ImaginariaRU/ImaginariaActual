@@ -1,0 +1,12 @@
+Source: imaginaria
+Section: unknown
+Priority: optional
+Maintainer: Karel Wintersky <karel.wintersky@gmail.com>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 3.9.8
+
+Package: imaginaria
+Architecture: all
+Depends: mysql-server | default-mysql-server, nginx-full, php-common, php-cli, php-curl, php-fileinfo, php-fpm, php-gd, php-iconv, php-intl, php-json, php-mbstring, php-mysqli, php-pdo, php-intl, php-readline, php-opcache, php-xml, php-zip
+Description: Imaginaria Site
+

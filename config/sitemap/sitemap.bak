@@ -1,0 +1,56 @@
+[___GLOBAL_SETTINGS___]
+sitehref = 'https://imaginaria.ru/'
+sitemaps_storage = '/var/www/imaginaria/sitemaps/'
+sitemaps_mainindex = '/var/www/imaginaria/sitemap.xml'
+sitemaps_href = 'https://imaginaria.ru/sitemaps/'
+sitemaps_filename_separator = '-'
+limit_urls = 50000
+limit_bytes = 50000000
+use_gzip = 1
+logging = 0
+date_format_type = 'iso8601'
+db_section_suffix = 'DATABASE'
+
+[___GLOBAL_SETTINGS:DATABASE___]
+driver   = 'mysql'
+hostname = 'localhost'
+username = 'root'
+password = 'password'
+database = 'imaginaria'
+port     = 3306
+
+; sitemapcreator / woddenwood 
+
+[posts]
+source = 'sql'
+sql_count_request = 'SELECT COUNT(topic_id) AS cnt FROM ls_topic'
+sql_count_value = 'cnt'
+sql_data_request = 'SELECT ls_topic.topic_id, ls_niceurl_topic.title_lat as url, ls_topic.topic_date_add as lastmod FROM ls_niceurl_topic, ls_topic WHERE ls_topic.topic_id = ls_niceurl_topic.id'
+sql_data_id = 'url'
+sql_data_lastmod = 'lastmod'
+url_location = 'p/%s.html'
+url_priority = '0.5'
+url_changefreq = 'daily'
+radical = 'posts'
+
+[users]
+source = 'sql'
+sql_count_request = 'SELECT COUNT(user_id) AS cnt FROM ls_user WHERE user_activate = 1 AND user_id NOT IN (SELECT user_id FROM ls_adminban)'
+sql_count_value = 'cnt'
+sql_data_request = 'SELECT user_id, user_login, user_date_comment_last FROM ls_user WHERE user_activate = 1 AND user_id NOT IN (SELECT user_id FROM ls_adminban)'
+sql_data_id = 'user_login'
+sql_data_lastmod = 'user_date_comment_last'
+url_location = 'profile/%s/'
+url_priority = '0.5'
+url_changefreq = 'daily'
+radical = 'users'
+
+[staticpages]
+source = 'file'
+filename = '$/staticpages.txt'
+url_location = '%s'
+url_priority = '0.5'
+url_changefreq = 'daily'
+lastmod = 'NOW()'
+radical = 'staticpages'
+

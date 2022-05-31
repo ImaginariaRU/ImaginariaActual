@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function(){
 	
 	function randd(min, max) {
 		return Math.floor(arguments.length > 1 ? (max - min + 1) * Math.random() + min : (min + 1) * Math.random());
-	};
+	}
 	
 	function hide_form(){
 		let oForm = document.querySelector('.reg_form');	

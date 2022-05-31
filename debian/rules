@@ -1,0 +1,37 @@
+#!/usr/bin/make -f
+
+PACKAGENAME := $(shell awk '/^Package:/ {print $$2;}' debian/control)
+
+%:
+	dh $@
+
+configure: configure-stamp
+configure-stamp:
+	dh_testdir
+	touch configure-stamp
+
+build: build-stamp
+
+build-stamp: configure-stamp
+	dh_testdir
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp configure-stamp
+	dh_clean
+
+install: build
+	dh_testdir
+	dh_testroot
+	dh_prep
+	dh_installdirs
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/$(PACKAGENAME)
+
+override_dh_auto_install:
+	$(MAKE) install DESTDIR=$(CURDIR)/debian/47news-v1-admin
+
+override_dh_auto_build:
+
+
