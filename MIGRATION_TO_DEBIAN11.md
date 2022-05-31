@@ -19,13 +19,11 @@ ALTER TABLE ls_comment MODIFY COLUMN comment_edit_count int(11) DEFAULT 0 NULL;
 
 ## DkLabCache
 
-livestreet/dklabcache                           вместо  /var/www.imaginaria/imaginaria.actual/engine/lib/external/DklabCache
-
-Пока не заменяем
+Заменено на livestreet/dklabcache с добавлением REDIS  
 
 ## Hacker Console
 
-composer require mr-lexx/hacker-console         вместо  /var/www.imaginaria/imaginaria.actual/engine/lib/external/HackerConsole
+Заменено на mr-lexx/hacker-console
 
 ## KCaptcha
 
