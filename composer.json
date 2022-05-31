@@ -42,7 +42,8 @@
         "imaginaria/dbsimple": "^1.1.0",
         "phpmailer/phpmailer": "^6.6",
         "mr-lexx/hacker-console": "^2.1",
-        "livestreet/dklabcache": "^1.0"
+        "livestreet/dklabcache": "^1.0",
+        "nilportugues/sphinx-search": "^1.0"
     },
     "require-dev": {
         "roave/security-advisories": "dev-latest"

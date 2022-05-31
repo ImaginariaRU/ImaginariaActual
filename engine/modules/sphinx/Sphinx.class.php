@@ -2,7 +2,9 @@
 
 //@todo: include via Sphinx
 
-require_once(Config::Get('path.root.engine') . '/lib/external/Sphinx/sphinxapi.php');
+// require_once(Config::Get('path.root.engine') . '/lib/external/Sphinx/sphinxapi.php');
+
+use NilPortugues\Sphinx\SphinxClient;
 
 /**
  * Модуль для работы с машиной полнотекстового поиска Sphinx
@@ -52,7 +54,7 @@ class ModuleSphinx extends Module
      * @param array $aExtraFilters Список фильтров
      * @return int
      */
-    public function GetNumResultsByType($sTerms, $sObjType = 'topics', $aExtraFilters)
+    public function GetNumResultsByType($sTerms, $sObjType = 'topics', $aExtraFilters = [])
     {
         $aResults = $this->FindContent($sTerms, $sObjType, 1, 1, $aExtraFilters);
         return $aResults['total_found'];
@@ -66,7 +68,7 @@ class ModuleSphinx extends Module
      * @param int $iOffset Сдвиг элементов
      * @param int $iLimit Количество элементов
      * @param array $aExtraFilters Список фильтров
-     * @return array
+     * @return array|bool
      */
     public function FindContent($sTerms, $sObjType, $iOffset, $iLimit, $aExtraFilters)
     {
@@ -97,7 +99,7 @@ class ModuleSphinx extends Module
              * Ищем
              */
             if (!is_array($data = $this->oSphinx->Query($sTerms, Config::Get('module.search.entity_prefix') . $sObjType . 'Index'))) {
-                return FALSE; // Скорее всего недоступен демон searchd
+                return false; // Скорее всего недоступен демон searchd
             }
             /**
              * Если результатов нет, то и в кеш писать не стоит...
