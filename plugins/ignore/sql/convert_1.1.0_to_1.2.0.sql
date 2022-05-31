@@ -1,0 +1,1 @@
+ALTER TABLE `prefix_ignore` ADD COLUMN `ignore_extra` TEXT NULL AFTER `ignore_reason`; 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Simple Search and Auto Completer</lang>
+    </name>
+    <author>
+        <lang name="default">PSNet</lang>
+    </author>
+    <version>2.0.0</version>
+    <requires>
+        <livestreet>1.0</livestreet>
+        <plugins></plugins>
+    </requires>
+    <description>
+        <lang name="default">Search with relevance for topics, comments, users, blog descriptions and tags with a
+            search on the user's favorites and in blogs, search auto completer using tags.
+        </lang>
+        <lang name="russian">Поиск с релевантностью по топикам, комментам, пользователям, описаниям блогов и
+            тегам с возможностью поиска по избранному пользователя и в блогах, автозаполнение (автокомплитер) по тегам
+            для формы поиска.
+        </lang>
+    </description>
+</plugin>

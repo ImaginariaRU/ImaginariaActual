@@ -1,0 +1,61 @@
+/* Up panel */
+.to_top {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 75px; /* was 90px, уменьшено по просьбе Кейт 2019-02-11, см тг-чат имажинарии */
+    -moz-opacity: 0.3;
+    filter: alpha(opacity=30);
+    opacity: 0.3;
+    display: none;
+}
+
+.to_top .to_top_panel {
+    width: 100%;
+    height: 100%;
+    font-size: 11px;
+    color: #3F8AD7;
+    padding-top: 10px;
+}
+
+.to_top:hover {
+    -moz-opacity: 0.9;
+    filter: alpha(opacity=90);
+    opacity: 0.9;
+}
+
+.to_top:hover .to_top_panel {
+    cursor: pointer;
+    background: #f0f0f0;
+}
+
+.to_top .to_top_button {
+    text-align: left;
+    line-height: 10px;
+    margin-left: 10px;
+    font-family: tahoma, arial, verdana, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.to_top .to_top_button .arrow {
+    font-size: 14px;
+    font-weight: bold;
+    font-family: tahoma;
+    vertical-align: middle;
+}
+
+/* стиль для mini панели */
+
+.to_top.mini {
+    width: 40px;
+}
+
+.to_top.mini .to_top_panel .arrow {
+    font-size: 20px;
+}
+
+.to_top.mini .to_top_panel .label {
+    display: none;
+}

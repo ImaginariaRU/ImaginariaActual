@@ -1,0 +1,166 @@
+/*
+//
+//  Attachments plugin
+//  (P) Rafrica.net Studio, 2010 - 2012
+//  http://we.rafrica.net/
+//
+*/
+
+div.FileUploadBox {
+    background: #F7F8F9;
+    border: 1px solid #EEE;
+    font-family: Verdana;
+    padding: 4px 5px;
+    margin: 5px 0 15px;
+}
+
+div.FileUploadBox.SidebarAdditionalParams {
+    margin: 0;
+}
+
+div.FileUploadBox form#att_file_upload_form {
+}
+
+div.FileUploadBox form#att_file_upload_form span {
+    margin: 0 0 0 10px;
+}
+
+div.FileUploadBox form#att_file_upload_form div#AttFileOperationInfoBox {
+    border: 1px solid #999;
+    color: #777;
+    display: inline-block;
+    font-size: 10px;
+    text-shadow: 0 1px 1px #BBB;
+    margin: 0 10px;
+    background: #FFF url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAMCAMAAAB2iTwcAAADAFBMVEXl5eXp6en9/f3o6Oj09PTX19fq6urT09P19fXz8/Pe3t7W1tbf39/Hx8ft7e3g4ODu7u729vbm5ubr6+vZ2dnY2Njj4+Pn5+fw8PDLy8vs7Oy4uLi5ubm9vb38/Pzk5OTa2trV1dXU1NT+/v7///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABPTfhxAAAACXBIWXMAAAsSAAALEgHS3X78AAAAPElEQVQImSXLQQoAIAgFUWnfJiKKCgrn/mdMbfVw+AqgqEArYIxhWMGj0j3elWNScyLgo86Jq+15kXjjAXn4COBB1iwwAAAAAElFTkSuQmCC) 5px center no-repeat;
+    padding: 2px 5px 1px 20px;
+}
+
+div.FileUploadBox form#att_file_upload_form div#AttFileListBox {
+    background: #FFF;
+    border: 1px solid #EEE;
+    margin: 5px 10px -15px;
+    padding: 2px 7px;
+}
+
+div.FileUploadBox form#att_file_upload_form div#AttFileListBox div.FileLine {
+    background: #F8F9FA;
+    border: 1px solid #EEE;
+    font-weight: bold;
+    margin: 5px 0;
+    padding: 2px 4px;
+    clear: both;
+    box-shadow: 1px 1px 2px #F5F5F5;
+    -moz-box-shadow: 1px 1px 2px #F5F5F5;
+    -webkit-box-shadow: 1px 1px 2px #F5F5F5;
+}
+
+div.FileUploadBox.SidebarAdditionalParams form#att_file_upload_form div#AttFileListBox div.FileLine {
+    overflow: hidden;
+}
+
+div.FileUploadBox.SidebarAdditionalParams form#att_file_upload_form div#AttFileListBox div.FileLine a.ListedFile {
+    display: inline-block;
+    overflow: hidden;
+    width: 70%;
+}
+
+div.FileUploadBox form#att_file_upload_form div#AttFileListBox div.FileLine:hover {
+    border: 1px solid #E5E5E5;
+    background: #F5F6F7;
+}
+
+div.FileUploadBox form#att_file_upload_form div#AttFileListBox div.FileLine a.ListedFile {
+    outline: none;
+}
+
+div.FileUploadBox form#att_file_upload_form div#AttFileListBox div.FileLine img.SmallIcon {
+    width: 16px;
+    height: 16px;
+    border: none;
+    float: left;
+    margin: 1px 10px 0 0;
+    overflow: hidden;
+    padding: 0;
+}
+
+div.FileUploadBox form#att_file_upload_form div#AttFileListBox div.FileLine div.DeleteFile,
+div.block div.UnattachedFileList div.DeleteThisFile,
+div.block div.UnattachedFileList div.AttachThisFileToNewTopic {
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsSAAALEgHS3X78AAADOUlEQVQ4jS2TTU9cVQCGn3PO/WBmHEEgwMAU0PJhJxWoDKCk7E0amyYaE2NiYoj9E036Q1oJ0Y1i4sqdceGikVZgQSmVRW1obQrDCJfL3JlhLufDxfT9AU/e5Hlf8WJtTUgpnW61RoGsF4ZPjbXSgbW0IwEBUklpdatVAhpeGO5ba4X4Xgiazg2PFwo/O8j9c3DwZSDEk5ZzSoMB8ECFQpgL566+OzDwI1B/fnj4RSjES/UZjI5PTq5du3FjYahU6mtWq/NxFG10BMGBEEJ5UsqM5xlnzEzx0qWV2Zs3Z/onJ4vpycliPYp+lylkUq1z5/U6L/f3TWlpqTwwOHi/kabTGGMwxjTTdLq7r+/+xOJi+fD1axMfH5NqnbuAjPpciP8OTk4e1KrVucLISPHfV6/M0NhYsRnHc3GS/Gmhr7u3d/Xy7Gz5OIqMM0btrq9vViqVr0MhdtUtEL6UlcrZ2UYSx+X+QqF4eHRk+oeHh5Lj42u+7386OjU1H8exEc6pZzs7m6dR9G1GysfCOSF+AAwoI4SpOTfd09OzMlYqzSaNhs1msxLnSNPU4px8vre3Va/VlrNCbHvOKQVGrLYBaFBaSlO39mpXZ+e9sYmJj09PT216cYEzRkZRtN5IktsZIZ54zikPjAK8vwAfyACZN+azxpBEEadHRwgpsc5RbzQ4B+rO0QSawAWgPmyPRAVgLEx3Z7Or47298/UostkgkD6IDint22E4nGi90LD2kYODFigNTpVB+O3VzfR2dHw31dVVtkliOpRS23G8Xj0/fzUchsMdQpieIBg61bp8Zu2GgAMDQs2163ww4Psr1zs7y36aGiWEenB2tpVovZw692tF64WJIBjKCmEKvl880rpctfahBxU1A1fe8/2fPsnnZzLOGQnqt1pt61jr5Rh2GnCkrX1U0Xqu5PtDOSnN5SAoRsYsnVj7h1eF5gjU8s5hQf1Sqz18rPXtF7Cz1/4R78P2iNbf2CS591U+/5EUAgtJFZqEwCCM3/H9rbu+/7QISyEo4C0geCMpF4IqwvW7vv/3Hd/fHISxsC2AEPDycMWDXATPACmg4aAFOAGBawPtOzCmIanBLmD/B6gfmVDdmy6RAAAAAElFTkSuQmCC) left center no-repeat;
+    float: right;
+    height: 16px;
+    width: 16px;
+    margin: 1px 0;
+    opacity: 0.7;
+}
+
+div.FileUploadBox form#att_file_upload_form div#AttFileListBox div.FileLine div.DeleteFile:hover,
+div.block div.UnattachedFileList div.DeleteThisFile:hover,
+div.block div.UnattachedFileList div.AttachThisFileToNewTopic:hover {
+    opacity: 1;
+}
+
+div.FileUploadBox form#att_file_upload_form input[type="file"] {
+    margin: 0 0 0 10px;
+}
+
+div.FileUploadBox form#att_file_upload_form iframe#att_upload_frame {
+    width: 0;
+    height: 15px;
+    border: none;
+}
+
+/* unattached files in sidebar */
+
+div.block div.UnattachedFileList {
+    padding: 2px 5px 3px;
+}
+
+div.block div.UnattachedFileList.secondLine {
+    background: #FAFAFA;
+}
+
+div.block div.UnattachedFileList a.CurFileA {
+    display: inline-block;
+    overflow: hidden;
+    width: 70%;
+}
+
+div.block div.UnattachedFileList div.AttachThisFileToNewTopic {
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQNJREFUeNpi/P//PwMlgImBQkCxASzInGdMWM1bDSI+MjA0nvv//0o0mpeJcoHU3Lkh3xgYuoBMA5K8ALSriUFbW+Lz3bsMkvHxnl8ZGGbj9QKyk/8CDWfU1haXTk623t3ff+3+o0ff/jAwMOI14CbQf0BbFZ0WLjT+9eIFw+c3bxi29/dff/Do0RGgdDrBWFgIwelb4+PPfnn9muHVxYsMLx89+gy0Np2RmGgEGbCIgeGnHxPT4t09PWeFREQYvjMwMP8Div/DYQAjckpkZGSUZ2JiCgDSxxb+/fvvBwPDzJ8QKROYmiy0aEQJA6jmbUDmbQaIrSaEophx6OcFig0ACDAABhNcXRU+ncoAAAAASUVORK5CYII=) left center no-repeat;
+}
+
+div.block div.UnattachedFileList div.DeleteThisFile,
+div.block div.UnattachedFileList div.AttachThisFileToNewTopic {
+    margin: 2px 0 0 10px;
+}
+
+/* sidebar file form place */
+
+div.block.white#Attachments_Sidebar_Place_Parent_ID {
+    display: none;
+}
+
+/* below topics */
+
+li.FilesInTopic {
+    margin: 0 10px;
+    font-size: 10px;
+    background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAQNJREFUeNpi/P//PwMlgImBQkCxASzInGdMWM1bDSI+MjA0nvv//0o0mpeJcoHU3Lkh3xgYuoBMA5K8ALSriUFbW+Lz3bsMkvHxnl8ZGGbj9QKyk/8CDWfU1haXTk623t3ff+3+o0ff/jAwMOI14CbQf0BbFZ0WLjT+9eIFw+c3bxi29/dff/Do0RGgdDrBWFgIwelb4+PPfnn9muHVxYsMLx89+gy0Np2RmGgEGbCIgeGnHxPT4t09PWeFREQYvjMwMP8Div/DYQAjckpkZGSUZ2JiCgDSxxb+/fvvBwPDzJ8QKROYmiy0aEQJA6jmbUDmbQaIrSaEophx6OcFig0ACDAABhNcXRU+ncoAAAAASUVORK5CYII=) left center no-repeat;
+    padding-left: 18px;
+    float: left;
+}
+
+div.AttachmentsInTopic {
+    color: #222222;
+    font-size: 13px;
+    background: #FAFAFA;
+    padding: 10px 10px 2px;
+}
+
+div.AttachmentsInTopic a {
+    outline: none;
+    margin: 2px 0px;
+    display: block;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Tags like full</lang>
+    </name>
+    <author>
+        <lang name="default">PSNet</lang>
+    </author>
+    <version>1.0.2</version>
+    <requires>
+        <livestreet>1.0.3</livestreet>
+    </requires>
+    <description>
+        <lang name="default">Allows to add tags to topic by typing part of tag (not beginning always).</lang>
+        <lang name="russian">Позволяет вводить теги в топике набирая даже их часть (не обязательно начало тега).</lang>
+    </description>
+</plugin>

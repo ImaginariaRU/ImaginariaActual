@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Username substitute to actual nickname</lang>
+        <lang name="russian">Username substitute to actual nickname</lang>
+    </name>
+    <author>
+        <lang name="default">Karel Wintersky</lang>
+        <lang name="russian">Karel Wintersky</lang>
+    </author>
+    <version>1.0.0</version>
+    <requires>
+        <livestreet>1.0.4</livestreet>
+        <plugins>
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Changing %username% to nick of user, who reading that.</lang>
+        <lang name="russian">Подменяет %username% на ник пользователя, который читает его.</lang>
+    </description>
+</plugin>

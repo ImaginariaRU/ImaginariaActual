@@ -5,7 +5,10 @@
     "config": {
         "optimize-autoloader": true,
         "vendor-dir": "vendor",
-        "platform-check": false
+        "platform-check": false,
+        "allow-plugins": {
+            "imaginaria/plugin-installer": true
+        }
     },
     "require": {
         "php": ">=7.3",

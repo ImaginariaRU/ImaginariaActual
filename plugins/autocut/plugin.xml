@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">AutoCut</lang>
+        <lang name="russian">AutoCut</lang>
+    </name>
+    <author>
+        <lang name="default">Vladimir Linkevich + Karel Wintersky</lang>
+        <lang name="russian">Владимир Линкевич + Karel Wintersky</lang>
+    </author>
+    <version>0.1</version>
+    <requires>
+        <livestreet>1.0.4</livestreet>
+        <plugins>
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Adds cut automatically after selected count of symbols.</lang>
+        <lang name="russian">Вставляет кат в текст после заданного количества символов, если кат не установлен
+            пользователем раньше. Можно установить минимальный необрезаемый размер текста (в абсолютных величинах
+            и относительных от общей длины текста)
+        </lang>
+    </description>
+</plugin>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Font size changer</lang>
+    </name>
+    <author>
+        <lang name="default">PSNet</lang>
+    </author>
+    <homepage>http://psnet.lookformp3.net</homepage>
+    <version>1.0.1</version>
+    <requires>
+        <livestreet>1.0</livestreet>
+        <plugins></plugins>
+    </requires>
+    <description>
+        <lang name="default">Adds font size change buttons before and after each topic.</lang>
+        <lang name="russian">До и после каждого топика добавляет кнопки увеличения и уменьшения размера шрифта текста.
+        </lang>
+        <lang name="ukrainian">До та після тексту кожного топіку додає кнопки керування розміром шрифту текста.</lang>
+    </description>
+</plugin>

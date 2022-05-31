@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">URL Redirect</lang>
+    </name>
+    <author>
+        <lang name="default">PSNet</lang>
+    </author>
+    <version>1.2.2</version>
+    <requires>
+        <livestreet>1.0</livestreet>
+        <plugins></plugins>
+    </requires>
+    <description>
+        <lang name="default">Makes all foreign links with redirect page, opens in new window, adds class for all
+            external links. There are black, white and general lists for sites with personal rules for each site
+            (regular expressions).
+        </lang>
+        <lang name="russian">Выполняет обработку внешних ссылок через страницу выхода (редирект), делает внешние ссылки
+            в новой вкладке, добавляет класс на все "чужие" ссылки, что позволяет их стилизовать. Существуют белый,
+            черный и общий списки сайтов с возможностью построения сложных правил (регекспа).
+        </lang>
+        <lang name="ukrainian">Виконує обробку зовнішніх посилань через сторінку виходу (редірект), робить відкриття
+            зовнішніх посилань у новій вкладці, додає клас на усі зовнішні посилання, що дає можливість їх стилізувати.
+            Існують білий, чорний та загальний списки сайтів з можливістю побудови складних правил (регекспа).
+        </lang>
+    </description>
+</plugin>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Blacklist</lang>
+        <lang name="russian">Черный список</lang>
+    </name>
+    <author>
+        <lang name="default">Karel Wintersky</lang>
+        <lang name="russian">Karel Wintersky</lang>
+    </author>
+    <homepage>https://github.com/ImaginariaLS/ls_blacklist</homepage>
+    <version>1.4</version>
+    <requires>
+        <livestreet>1.0.4</livestreet>
+        <plugins>
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Blacklist</lang>
+        <lang name="russian">Проверка E-Mail пользователей на наличие в черных/белых списках и базах спамеров.</lang>
+    </description>
+</plugin>

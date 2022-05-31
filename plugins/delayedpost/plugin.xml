@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Delayed post</lang>
+    </name>
+    <author>
+        <lang name="default">Rafrica.net Studio, refactored KW</lang>
+    </author>
+    <version>1.4.4</version>
+    <requires>
+        <livestreet>1.0.4</livestreet>
+    </requires>
+    <description>
+        <lang name="russian">Позволяет откладывать публикацию топика как в Wordpress.</lang>
+        <lang name="default">Allows you to delay topic publication.</lang>
+    </description>
+</plugin>

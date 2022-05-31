@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Attachments</lang>
+    </name>
+    <version>1.4.0</version>
+    <requires>
+        <livestreet>1.0.5</livestreet>
+    </requires>
+    <description>
+        <lang name="default">Allows attach files to topic</lang>
+        <lang name="russian">Позволяет прикреплять файлы к топику</lang>
+    </description>
+</plugin>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Spoiler Plugin</lang>
+        <lang name="russian">Плагин Spoiler</lang>
+    </name>
+    <author>
+        <lang name="default">kks</lang>
+        <lang name="russian">kks</lang>
+    </author>
+    <version>1.1.0</version>
+    <requires>
+        <livestreet>1.0.3</livestreet>
+        <plugins>
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Spoiler tag support.</lang>
+        <lang name="russian">Плагин, добавляющий поддержку тега spoiler в топики и страницы.</lang>
+    </description>
+</plugin>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">HTTPS Detect</lang>
+    </name>
+    <author>
+        <lang name="default">Alexandr Verenik</lang>
+        <lang name="russian">Александр Вереник</lang>
+    </author>
+    <version>1.0.2</version>
+    <requires>
+        <livestreet>1.0.4</livestreet>
+        <plugins>
+
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Correct links for HTTP / HTTPS.</lang>
+        <lang name="russian">Коррекция ссылок HTTP/HTTPS .</lang>
+    </description>
+    <delegate>
+        <module></module>
+        <action></action>
+        <template></template>
+        <entity></entity>
+    </delegate>
+</plugin>

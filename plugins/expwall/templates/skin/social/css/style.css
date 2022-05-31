@@ -1,0 +1,28 @@
+/* -------------------------------------------------------
+ *
+ *   LiveStreet (v1.x)
+ *   Plugin Expanded wall (v.0.2.1)
+ *   Copyright © 2011 Bishovec Nikolay
+ *
+ * --------------------------------------------------------
+ *
+ *   Plugin Page: http://netlanc.net
+ *   Contact e-mail: netlanc@yandex.ru
+ *
+  ---------------------------------------------------------
+ */
+.wall-a {
+    text-transform: full-size-kana;
+}
+
+.wall-submit .counter {
+    float: right;
+    margin: 5px 5px 0 0;
+}
+
+.wcopy {
+    float: right;
+    clear: right;
+    font-size: 9px;
+    color: #ccc;
+}

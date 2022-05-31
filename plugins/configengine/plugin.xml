@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Config Engine</lang>
+    </name>
+    <author>
+        <lang name="default">PSNet</lang>
+    </author>
+    <settings>{configengine}</settings>
+    <version>1.3.0</version>
+    <requires>
+        <livestreet>1.0</livestreet>
+        <plugins></plugins>
+    </requires>
+    <description>
+        <lang name="default">Config engine for plugins.</lang>
+        <lang name="russian">Хранилище настроек для плагинов.</lang>
+        <lang name="ukrainian">Сховище налаштувань для плагінів.</lang>
+    </description>
+</plugin>

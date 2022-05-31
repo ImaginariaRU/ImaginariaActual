@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Expanded wall</lang>
+        <lang name="russian">Расширенная стена</lang>
+    </name>
+    <author>
+        <lang name="default">netlanc + Karel Wintersky</lang>
+    </author>
+    <homepage>http://netlanc.net</homepage>
+    <version>0.4</version>
+    <requires>
+        <livestreet>1.x</livestreet>
+        <plugins>
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Expanded wall</lang>
+        <lang name="russian">Расширенная стена</lang>
+    </description>
+</plugin>

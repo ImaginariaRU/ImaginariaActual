@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Remember me</lang>
+    </name>
+    <author>
+        <lang name="default">kpoxas</lang>
+    </author>
+    <version>1.4</version>
+    <requires>
+        <livestreet>1.0.5</livestreet>
+        <plugins>
+
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Extend built-in property "remember me" on login. Add an ability to save multiple sessions
+            owned by on user if he passes authorization at several workplaces.
+        </lang>
+        <lang name="russian">Расширяет встроенную функцию запоминать юзера при авторизации, добавляя возможность хранить
+            сессии в базе для разных компьютеров или браузеров.
+        </lang>
+    </description>
+</plugin>

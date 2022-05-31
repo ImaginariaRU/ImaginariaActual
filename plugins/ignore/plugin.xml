@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+	<name>
+		<lang name="default">Ignore</lang>
+	</name>
+	<author>
+		<lang name="default">Сделано руками @ Сергей Сарафанов (sersar) | ICQ: 172440790 | E-mail: sersar@ukr.net</lang>
+	</author>
+	<version>1.2.1</version>
+	<requires>
+		<livestreet>1.0.1</livestreet>
+		<plugins>
+		</plugins>
+	</requires>
+	<description>
+		<lang name="default">Плагин добавит возможность вносить в игнор нежелательных пользователей.</lang>
+	</description>
+</plugin>

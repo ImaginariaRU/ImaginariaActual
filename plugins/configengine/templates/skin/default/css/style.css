@@ -1,0 +1,132 @@
+/*
+	Configengine plugin
+	(P) PSNet, 2008 - 2013
+	http://psnet.lookformp3.net/
+	http://livestreet.ru/profile/PSNet/
+	https://catalog.livestreetcms.com/profile/PSNet/
+	http://livestreetguide.com/developer/PSNet/
+*/
+
+div.ConfigEngine {
+}
+
+div.ConfigEngine h3 {
+    margin-bottom: 20px;
+}
+
+div.ConfigEngine h3 span {
+    color: #22BB22;
+}
+
+div.ConfigEngine .PluginList {
+    margin-bottom: 20px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+}
+
+div.ConfigEngine .PluginList thead {
+    cursor: default;
+    text-shadow: 0 1px 1px #FFFFFF;
+    font: 14px/20px Tahoma;
+    background: #EEEEEE;
+    background: -moz-linear-gradient(top, rgba(245, 245, 245, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(245, 245, 245, 1)), color-stop(100%, rgba(238, 238, 238, 1)));
+    background: -webkit-linear-gradient(top, rgba(245, 245, 245, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    background: -o-linear-gradient(top, rgba(245, 245, 245, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(245, 245, 245, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    background: linear-gradient(to bottom, rgba(245, 245, 245, 1) 0%, rgba(238, 238, 238, 1) 100%);
+}
+
+div.ConfigEngine .PluginList th {
+    padding: 1px 2px 3px;
+    border-color: #ddd;
+}
+
+div.ConfigEngine .PluginList tr.second {
+    background: #FAFAFA;
+}
+
+div.ConfigEngine .PluginList tbody tr:hover {
+    background: #EEF8FF;
+}
+
+div.ConfigEngine .PluginList td {
+    padding: 1px 3px 2px;
+    text-align: center;
+    border: 1px solid #DDDDDD;
+}
+
+div.ConfigEngine .PluginList td.nameleft {
+    text-align: left;
+}
+
+div.ConfigEngine .PluginList .Tip {
+    background: #EFF5FF;
+    border: 1px solid #88A6FF;
+    border-radius: 10px 10px 10px 10px;
+    cursor: default;
+    display: inline-block;
+    font: 10px/16px Verdana, Helvetica;
+    height: 16px;
+    text-align: center;
+    width: 16px;
+    text-decoration: none;
+}
+
+div.ConfigEngine .PluginList .Control {
+    cursor: pointer;
+}
+
+div.ConfigEngine .ce_delete_plugin_config {
+    color: red;
+}
+
+div.ConfigEngine .ce_delete_plugin_config:hover {
+    border: 1px solid #FF8888;
+}
+
+/* import settings */
+
+div.CE_ImportSettings {
+}
+
+div.CE_ImportSettings div.FileField {
+    float: left;
+    height: 27px;
+    margin: 0 10px 0 0;
+    position: relative;
+    width: 500px;
+}
+
+div.CE_ImportSettings div.FileField > * {
+    left: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+div.CE_ImportSettings div.FileField div.FWrapper input {
+    font-size: 200px;
+    margin-top: -20px;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+}
+
+div.CE_ImportSettings div.FileField div.Cover {
+    background: #EEEEEE;
+    background: -moz-linear-gradient(top, rgba(229, 229, 229, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(229, 229, 229, 1)), color-stop(100%, rgba(238, 238, 238, 1)));
+    background: -webkit-linear-gradient(top, rgba(229, 229, 229, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    background: -o-linear-gradient(top, rgba(229, 229, 229, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(229, 229, 229, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    background: linear-gradient(to bottom, rgba(229, 229, 229, 1) 0%, rgba(238, 238, 238, 1) 100%);
+    border-radius: 2px 2px 2px 2px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.11) inset;
+    font: bold 12px/26px Tahoma, Verdana;
+    text-align: center;
+    text-shadow: 0 1px 0 #FFFFFF;
+    white-space: pre;
+}

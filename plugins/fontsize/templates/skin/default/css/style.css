@@ -1,0 +1,31 @@
+/*
+  Fontsize plugin
+*/
+
+.FontsizeContainer {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    margin: 3px 0;
+    text-align: right;
+}
+
+* [class^="Fontsize-"] {
+    cursor: pointer;
+    display: inline-block;
+    opacity: 0.3;
+    vertical-align: middle;
+}
+
+* [class^="Fontsize-"]:hover {
+    opacity: 1;
+}
+
+.Fontsize-Delim {
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAKCAYAAABi8KSDAAAACXBIWXMAAAsSAAALEgHS3X78AAABjklEQVQYlT2Qv2saYQCG3+87DbGBiLaFaNDYsVCODleKEELID5uhImQKCAdZOvgPuDkU94KLcLiIcVMQNSBVtIKLgxSklWILQmgdgoMiPZC74+2SZn2m53lAEpZlSZJoNBovAfw2DOOQJEgiHo+f67p+RhISAKSUAgDq9fo7APu9Xu8UABaLhWc+n2/1+/1n0+lUkSQhpXRms9lOpVI5BvC11WpdrlYrV6lUCiqK4gKw3e12Xzwq5HK5y2g0epPJZC4AMJvNHsVisbNqtRpJJBLvA4HANUgqlmVBVdV8Op2+2mw2EELcaZpWLJfLwfV6vT0cDvcMw3gNkhiPx889Hs+PVCr1MZ/PX4dCoe8A/gwGg6ckYdu2eAwsFAonQghbCLE7mUze+P3+nwCCzWbzHAAcx1Fs25YgiUgkcqvr+of/uzqdTgjAX03Tag9MkgSKxeKh1+v9NhqNDh6eb5mmiXA4/BmAXavVXpGE4zgSPp/vFwAmk8lPpmm6SKLdbr91u933AKiq6pflcvmEJP4B9enUu2gzXNwAAAAASUVORK5CYII=") no-repeat scroll center center transparent;
+    cursor: default;
+    height: 10px;
+    width: 11px;
+    opacity: 0.3 !important;
+}

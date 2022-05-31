@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>
+        <lang name="default">Up Scroll Plugin</lang>
+        <lang name="russian">Up Scroll Plugin</lang>
+    </name>
+    <author>
+        <lang name="default">Grebenkin Anton + Karel Wintersky</lang>
+    </author>
+    <version>1.1</version>
+    <requires>
+        <livestreet>1.0.3</livestreet>
+        <plugins>
+
+        </plugins>
+    </requires>
+    <description>
+        <lang name="default">Add Up panel button on left side.</lang>
+        <lang name="russian">Добавляет слева панель-ссылку, пролистывающую страницу вверх экрана.</lang>
+    </description>
+</plugin>

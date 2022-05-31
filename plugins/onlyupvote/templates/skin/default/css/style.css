@@ -1,0 +1,4 @@
+/* Hide vote-down element for comments */
+.vote-down {
+    display: none !important;
+}

@@ -1,0 +1,57 @@
+/*
+  Urlredirect plugin
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #FFFFFF;
+    color: #555555;
+    font-family: Arial;
+    font-size: 14px;
+    min-width: 900px;
+}
+
+div.URLRedirect_Page {
+    margin: 200px auto 0;
+    width: 700px;
+}
+
+div.URLRedirect_Page h1 {
+    margin: 10px 0;
+}
+
+div.URLRedirect_Page a {
+    color: blue;
+}
+
+div.URLRedirect_Page div div.GoLink {
+    margin: 10px 0;
+}
+
+div.URLRedirect_Page div small {
+    display: block;
+    margin: 10px 0;
+}
+
+div.URLRedirect_Page div div.LeftName {
+    border-right: 3px solid green;
+    margin: 10px;
+    padding: 10px;
+}
+
+div.URLRedirect_Page div.AccessDenied div.LeftName {
+    border-right: 3px solid red;
+}
+
+div.URLRedirect_Page div div.RightMessage {
+}
+
+div.URLRedirect_Page div.RefererError {
+    color: red;
+    font: 12px/12px Tahoma, Arial;
+    margin: 15px 0 0;
+}
