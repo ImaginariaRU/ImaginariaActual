@@ -16,23 +16,25 @@
 */
 
 set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__));
-require_once(Config::Get('path.root.engine') . '/lib/internal/ProfilerSimple/Profiler.class.php');
+require_once(Config::Get('path.root.engine') . '/lib/ProfilerSimple/Profiler.class.php');
 
-require_once("LsObject.class.php");
-require_once("Plugin.class.php");
-require_once("Block.class.php");
-require_once("Hook.class.php");
-require_once("Module.class.php");
-require_once("Router.class.php");
+define("ENGINE_CLASSES", dirname(__FILE__));
 
-require_once("Entity.class.php");
-require_once("Mapper.class.php");
+require_once ENGINE_CLASSES . '/LsObject.class.php';
+require_once ENGINE_CLASSES . '/Plugin.class.php';
+require_once ENGINE_CLASSES . '/Block.class.php';
+require_once ENGINE_CLASSES . '/Hook.class.php';
+require_once ENGINE_CLASSES . '/Module.class.php';
+require_once ENGINE_CLASSES . '/Router.class.php';
 
-require_once("ModuleORM.class.php");
-require_once("EntityORM.class.php");
-require_once("MapperORM.class.php");
+require_once ENGINE_CLASSES . '/Entity.class.php';
+require_once ENGINE_CLASSES . '/Mapper.class.php';
 
-require_once("ManyToManyRelation.class.php");
+require_once ENGINE_CLASSES . '/ModuleORM.class.php';
+require_once ENGINE_CLASSES . '/Entity.class.php';
+require_once ENGINE_CLASSES . '/MapperORM.class.php';
+
+require_once ENGINE_CLASSES . '/ManyToManyRelation.class.php';
 
 
 /**
@@ -214,7 +216,7 @@ class Engine extends LsObject
      *
      * @param string $sClassName Класс модуля маппера
      * @param string|null $sName Имя маппера
-     * @param DbSimple_Mysql|null $oConnect Объект коннекта к БД
+     * @param \DbSimple\Adapter\Mysqli|array $oConnect Объект коннекта к БД
      * Можно получить так:
      * <pre>
      * Engine::getInstance()->Database_GetConnect($aConfig);
@@ -387,7 +389,7 @@ class Engine extends LsObject
      * Возвращает имя экшена
      *
      * @static
-     * @param $oAction    Объект экшена
+     * @param string $oAction    Объект экшена
      * @return string|null
      */
     public static function GetActionName($oAction)
@@ -754,7 +756,7 @@ class Engine extends LsObject
      * Используется в {@link autoload автозагрузке}
      *
      * @static
-     * @param LsObject $oObject Объект - модуль, экшен, плагин, хук, сущность
+     * @param LsObject|string $oObject Объект - модуль, экшен, плагин, хук, сущность
      * @return null|string
      */
     public static function GetClassPath($oObject)
@@ -763,7 +765,9 @@ class Engine extends LsObject
             $oObject,
             self::CI_OBJECT
         );
+
         $sPath = Config::get('path.root.server') . '/';
+
         if ($aInfo[self::CI_ENTITY]) {
             // Сущность
             if ($aInfo[self::CI_PLUGIN]) {
@@ -841,7 +845,7 @@ class Engine extends LsObject
      * Возвращает имя модуля
      *
      * @static
-     * @param Module $oModule Объект модуля
+     * @param Module|string $oModule Объект модуля
      * @return string|null
      */
     public static function GetModuleName($oModule)
@@ -971,7 +975,7 @@ class Engine extends LsObject
      * Например <pre>PluginOpenid_</pre>
      *
      * @static
-     * @param Module $oModule Объект модуля
+     * @param Module|string $oModule Объект модуля
      * @return string    Если плагина нет, возвращает пустую строку
      */
     public static function GetPluginPrefix($oModule)
@@ -1154,7 +1158,7 @@ class LS extends LsObject
      * Возвращает объект сущности
      * @see Engine::GetEntity
      *
-     * @param $sName    Название сущности
+     * @param string $sName    Название сущности
      * @param array $aParams Параметры для передачи в конструктор
      * @return Entity
      */
@@ -1167,9 +1171,9 @@ class LS extends LsObject
      * Возвращает объект маппера
      * @see Engine::GetMapper
      *
-     * @param $sClassName Класс модуля маппера
+     * @param string $sClassName Класс модуля маппера
      * @param string|null $sName Имя маппера
-     * @param DbSimple_Mysql|null $oConnect Объект коннекта к БД
+     * @param \DbSimple\Adapter\Mysqli|null $oConnect Объект коннекта к БД
      * @return mixed
      */
     static public function Mpr($sClassName, $sName = null, $oConnect = null)
@@ -1216,7 +1220,7 @@ class LS extends LsObject
      * Например <pre>LS::Module_Method()</pre>
      *
      * @static
-     * @param $sName    Полное название метода, например <pre>Module_Method</pre>
+     * @param string $sName    Полное название метода, например <pre>Module_Method</pre>
      * @param array $aArgs Список аргуметов метода
      * @return mixed
      */
@@ -1229,7 +1233,7 @@ class LS extends LsObject
      * Вызов метода модуля
      * Например <pre>$LS->Module_Method()</pre>
      *
-     * @param $sName    Полное название метода, например <pre>Module_Method</pre>
+     * @param string $sName    Полное название метода, например <pre>Module_Method</pre>
      * @param array $aArgs Список аргуметов метода
      * @return mixed
      */

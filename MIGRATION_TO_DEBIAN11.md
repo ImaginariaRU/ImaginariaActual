@@ -27,7 +27,9 @@ ALTER TABLE ls_comment MODIFY COLUMN comment_edit_count int(11) DEFAULT 0 NULL;
 
 ## KCaptcha
 
-composer require ganlvtech/kcaptcha             вместо /var/www.imaginaria/imaginaria.actual/engine/lib/external/kcaptcha (только нужны доработки -> ajur-media/kcaptcha)
+по идее, `composer require ganlvtech/kcaptcha`             вместо /var/www.imaginaria/imaginaria.actual/engine/lib/external/kcaptcha (только нужны доработки -> ajur-media/kcaptcha)
+
+Но тут все сложно, потому что она упоминается в куче вызовов. 
 
 ## PHPMailer
 
