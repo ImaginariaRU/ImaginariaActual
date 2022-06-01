@@ -579,3 +579,16 @@ if (!function_exists('d')) {
         }
     }
 }
+
+if (!function_exists('is_countable')) {
+    function is_countable($var) {
+        return (is_array($var) || $var instanceof Countable);
+    }
+}
+
+if (!function_exists('fGetConfig')) {
+    function fGetConfig($sPath) {
+        $config = [];
+        return include_once $sPath;
+    }
+}

@@ -16,21 +16,11 @@
 */
 
 /**
- * Основные константы
- */
-define('LS_VERSION', '1.0.5');
-
-/**
  * Operations with Config object
  */
 require_once(dirname(__FILE__, 2) . "/engine/lib/ConfigSimple/Config.class.php");
 
 Config::LoadFromFile(__DIR__ . '/config.php');
-
-$fGetConfig = function ($sPath) {
-    $config = [];
-    return include_once $sPath;
-};
 
 Config::Set("module.search", [
     'entity_prefix' =>  '',
@@ -48,7 +38,6 @@ if (file_exists(Config::Get('path.root.server') . '/config/config.local.php')) {
     Config::LoadFromFile(Config::Get('path.root.server') . '/config/config.local.php', false);
 }
 
-
 /**
  * Загружает конфиги плагинов вида /plugins/[plugin_name]/config/*.php
  * и include-файлы /plugins/[plugin_name]/include/*.php
@@ -61,7 +50,7 @@ if ($aPluginsList = @file($sPluginsListFile)) {
         $aConfigFiles = glob($sPluginsDir . '/' . $sPlugin . '/config/*.php');
         if ($aConfigFiles and count($aConfigFiles) > 0) {
             foreach ($aConfigFiles as $sPath) {
-                $aConfig = $fGetConfig($sPath);
+                $aConfig = fGetConfig($sPath);
                 if (!empty($aConfig) && is_array($aConfig)) {
                     // Если конфиг этого плагина пуст, то загружаем массив целиком
                     $sKey = "plugin.$sPlugin";
@@ -90,8 +79,3 @@ if ($aPluginsList = @file($sPluginsListFile)) {
     }
 }
 
-if (!function_exists('is_countable')) {
-    function is_countable($var) {
-        return (is_array($var) || $var instanceof Countable);
-    }
-}
