@@ -9,8 +9,8 @@ ANSI_YELLOW='\033[1;33m'
 ANSI_RESET='\033[0m'
 
 PATH_PROJECT=/var/www/imaginaria
-
 PATH_CONFIG=/var/www/imaginaria/config
+PATH_CACHE=/var/www/imaginaria/cache
 
 case "$1" in
     configure)
@@ -26,6 +26,9 @@ case "$1" in
 
         echo
         echo "Running postinstall tasks..."
+
+        echo "Clearing SMARTY cache..."
+        rm -rf ${PATH_CACHE}/*
 
         echo "Fixing access rights..."
         chown -R www-data:www-data ${PATH_PROJECT}/*

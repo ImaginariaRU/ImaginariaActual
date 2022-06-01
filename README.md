@@ -5,9 +5,10 @@ WTF
 
 Лицензия GPL.
 
-Из репозитория исключен конфигурационный файл `config/config.local.php`
+Из репозитория исключены конфигурационные файлы 
 
-В данный момент код в репозитории очень-очень `legacy`.
+- `config/config.local.php`
+- `config/searchd.credentials.imaginaria`
 
 Install
 =======
@@ -26,6 +27,18 @@ apt install nginx-full php-fpm
 apt install php-curl php-fileinfo php-gd php-pdo php-mbstring php-mysqli php-xml php-zip php-phsql php-intl 
 ```
 
+Конфиг для мантикоры должен лежать в `/etc/manticonf/credentials.imaginaria`: 
+```
+#!/usr/bin/env bash
+
+export DB_HOST="localhost"
+export DB_BASE="imaginaria"
+export DB_USER="imaginaria"
+export DB_PASS="..."
+# -eof-
+
+```
+
 
 
 Restore configs
@@ -34,19 +47,10 @@ cp /srv/Imaginaria.Config/config.local.php /path/to/config/config.local.php
 cp /srv/Imaginaria.Config/plugins.dat /path/to/plugins/plugins.dat
 ```
 
-+ примонтировать `.cache` 
++ примонтировать `cache` 
 + выставить права и владельца
 + 
 
-Update
-======
-
-```
-rm -rf ./.cache/compiled/*
-rm -rf ./.cache/assets/*
-```
-
-See: https://stackoverflow.com/questions/47470271/what-does-remote-actually-do-in-git-submodule-update-remote
 
 
 

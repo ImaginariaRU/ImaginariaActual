@@ -3,6 +3,7 @@
 PROJECT_NAME  = imaginaria
 PROJECT_DIR = imaginaria
 PROJECT_PATH = $(DESTDIR)/var/www/$(PROJECT_DIR)
+PATH_MANTICONF_INDEXES = /etc/manticonf/conf.d/imaginaria
 
 help:
 	@perl -e '$(HELP_ACTION)' $(MAKEFILE_LIST)
@@ -27,6 +28,9 @@ install: 	##@system Install package. Don't run it manually!!!
 	git log --oneline --format="%at" -n 1 HEAD | xargs -I{} date -d @{} +%Y-%m-%d >> $(PROJECT_PATH)/_version
 	cd $(PROJECT_PATH)/ && composer install && rm composer.lock
 	cp makefile.production-toolkit $(PROJECT_PATH)/makefile
+	mkdir -p $(DESTDIR)$(PATH_MANTICONF_INDEXES)
+	cp -r config/searchd/* $(DESTDIR)$(PATH_MANTICONF_INDEXES)/
+	chmod -R 0644 $(DESTDIR)$(PATH_MANTICONF_INDEXES)/
 	install -d $(PROJECT_PATH)/logs
 	install -d $(PROJECT_PATH)/cache
 	install -d $(PROJECT_PATH)/tmp
