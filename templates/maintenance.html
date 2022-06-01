@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Imaginaria.ru is under maintenance.</title>
+    <style type="text/css">
+        body {
+            font-size: x-large;
+        }
+        button {
+            background: transparent;
+            border: transparent;
+        }
+    </style>
+    <script type="text/javascript">
+        const excuses_list = [
+            'rocks fall everybody dies',
+            '... нужно больше золота!',
+            '... недостаточно маны!',
+            '... чиcтое волшебство. Полный serverless.',
+            '... внезапное нашестие единорогов. Тысячи их.',
+            '... потому, что ролевикам не дают.',
+            'ИР компилируется, ждите',
+            'Патамучто ролевики не дают.',
+            '... Внезапное нашествие инкубов. Тысячи их.',
+            '... Сервер лежит... в торпоре. Потому что V5.',
+            '... Ад-Мех забыл восславить Омниссию.',
+            'Тысяча слонов!',
+            'Там ересь. Сервер закрыт.',
+            '... в интернетах выпал критглич. Ребут через 2д6 часов.',
+            'Walk by. There\'s nothing to look at.',
+            '... случилось нападение гуся-диаблериста.',
+            'Сервак лежит из-за коварного заговора имко-мафии...',
+            'Предохранительный клапан минусов перекрыли, и от скопившегося давления рванули котлы.',
+            'Во всем виноваты диверсанты с Троллемира.',
+            'Внезапные квантовые медведи.',
+            'Вантала принес еще несколько сотен сеттингов.',
+        ];
+
+        function $$(id)
+        {
+            if (typeof id == 'string') {
+                return document.getElementById(id);
+            }
+            return id;
+        }
+        function addOnclickListener(target, action)
+        {
+            const el = document.getElementById(target);
+            el[window.addEventListener ? 'addEventListener' : 'attachEvent']( window.addEventListener ? 'click' : 'onclick', action, false);
+        }
+
+        function Roll(rollsides)
+        {
+            const sides = rollsides || 20;
+            return Math.floor( Math.random() * sides );
+        }
+        
+        function change_excuse() {
+            var index = Roll( excuses_list.length );
+            $$('content').innerHTML = excuses_list[index];
+        }
+
+        function init() {
+            // Add key listener
+            document.onkeyup = function(e) {
+                e = e || window.event;
+                let keycode = (e.keyCode ? e.keyCode : e.which);
+                if (keycode == 32) {
+                    change_excuse();
+                }
+            };
+            change_excuse();
+            addOnclickListener('roll_d20', change_excuse);
+        }
+    </script>
+</head>
+<body onload="init()">
+    <h3>Imaginaria.ru is under maintenance</h3>
+
+    <button id="roll_d20"><img src="/templates/keep_calm.jpg"></button>
+
+    <fieldset>
+        <legend>На самом деле...</legend>
+        <div id="content"></div>
+    </fieldset> 
+
+
+
+
+</body>
+</html>

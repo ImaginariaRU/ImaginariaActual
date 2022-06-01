@@ -13,11 +13,20 @@ Install
 =======
 
 ```
-git clone https://github.com/ImaginariaRU/ImaginariaLS.git .
-git submodule init
-git submodule update
-composer install
+dpkg-reconfigure keyboard-configuration
+dpkg-reconfigure locales
+dpkg-reconfigure tzdata
+apt-get install localepurge
+sudo apt install console-cyrillic -y
+hostnamectl set-hostname imaginaria.ru
+apt install sudo
+apt install wget curl pv zip pigz htop nano ncdu
+apt install debhelper dh-make devscripts fakeroot build-essential automake gnupg
+apt install nginx-full php-fpm
+apt install php-curl php-fileinfo php-gd php-pdo php-mbstring php-mysqli php-xml php-zip php-phsql php-intl 
 ```
+
+
 
 Restore configs
 ```
@@ -33,10 +42,6 @@ Update
 ======
 
 ```
-git pull
-git submodule init
-git submodule update --remote
-composer install
 rm -rf ./.cache/compiled/*
 rm -rf ./.cache/assets/*
 ```
