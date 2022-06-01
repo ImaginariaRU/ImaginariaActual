@@ -57,7 +57,8 @@ class ModuleSphinx extends Module
     public function GetNumResultsByType($sTerms, $sObjType = 'topics', $aExtraFilters = [])
     {
         $aResults = $this->FindContent($sTerms, $sObjType, 1, 1, $aExtraFilters);
-        return $aResults['total_found'];
+
+        return is_array($aResults) ? $aResults['total_found'] : 0;
     }
 
     /**
