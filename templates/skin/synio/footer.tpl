@@ -50,11 +50,11 @@
 		<div class="copyright">
 			{hook run='copyright'}
 			
-			<div class="design-by">
+			{*<div class="design-by">
 				<img src="{cfg name='path.static.skin'}/images/xeoart.png" alt="xeoart" />
 				Design by <a href="http://xeoart.ru">xeoart</a>
 				<div>2012</div>
-			</div>
+			</div>*}
 		</div>
 		
 		{hook run='footer_end'}

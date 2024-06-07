@@ -16,18 +16,6 @@
 	<meta name="description" content="{$sHtmlDescription}">
 	<meta name="keywords" content="{$sHtmlKeywords}">
 	<meta name="google-site-verification" content="Ta-VrTs7WtoIsWkkcKR7FPKT5EAyJIRDAMcCUK6kaks" />
-<!--	<script src="/templates/skin/synio/js/reguser_script.js" defer ></script> -->
-<!--	<script src="https://www.google.com/recaptcha/api.js"></script>-->
-<!--	<script type="text/javascript">
-      var onloadCallback = function() {
-	debugger;
-        grecaptcha.render('new_re', {
-          'sitekey' : '6LeQ0lAaAAAAAH2D4apU6ghquCH2rJ0ZsFORAdA5'
-        });
-      };
-    </script> 
-<script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit" async defer>
-    </script>-->
 	{$aHtmlHeadFiles.css}
 	
 	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -77,6 +65,7 @@
 	</script>
 
 <!-- Matomo -->
+{*
 <script type="text/javascript">
   window.Base64 ={ keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(b){ var c="",d=0;for(b=Base64._utf8_encode(b);d<b.length;){ var a=b.charCodeAt(d++);var e=b.charCodeAt(d++);var f=b.charCodeAt(d++);var k=a>>2;a=(a&3)<<4|e>>4;var h=(e&15)<<2|f>>6;var g=f&63;isNaN(e)?h=g=64:isNaN(f)&&(g=64);c=c+Base64.keyStr.charAt(k)+Base64.keyStr.charAt(a)+Base64.keyStr.charAt(h)+Base64.keyStr.charAt(g) }return c },_utf8_encode:function(b){ b=b.replace(/\r\n/g,"\n");for(var c="",d=0;d<
 b.length;d++){ var a=b.charCodeAt(d);128>a?c+=String.fromCharCode(a):(127<a&&2048>a?c+=String.fromCharCode(a>>6|192):(c+=String.fromCharCode(a>>12|224),c+=String.fromCharCode(a>>6&63|128)),c+=String.fromCharCode(a&63|128)) }return c } };
@@ -93,6 +82,7 @@ b.length;d++){ var a=b.charCodeAt(d);128>a?c+=String.fromCharCode(a):(127<a&&204
     g.type='text/javascript'; g.async=true; g.src=u+'MPCJGaWVkktMHz5KAs5NvTs6.js'; s.parentNode.insertBefore(g,s);
   })();
 </script>
+*}
 <!-- End Matomo Code -->
 
 	{$aHtmlHeadFiles.js}
