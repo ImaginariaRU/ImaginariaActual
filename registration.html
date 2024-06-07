@@ -1,480 +1,840 @@
-<html>
+<html lang="ru">
 <head>
-  <meta charset="utf-8">
-  <title>Регистрация / Имажинария</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1"> 
-	<script src="/templates/skin/synio/js/reguser_script.js"></script>
-	 <!-- <script src="reguser_script.js"></script>  -->
-	<script src="https://www.google.com/recaptcha/api.js"></script>
-	<link href="https://imaginaria.ru/templates/favicon/favicon.ico?v1" rel="shortcut icon">
-	<style>
-		body {
-			padding: 0;
-			margin: 0;
-			background: #fbfcfc;
-			font-size: 12px;
-			font-family: Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
-			line-height: 18px;
-			color: #000;
-		}
-		#wrapper{
-			display: flex;
-			flex-direction: column;
-			height: 100vh;
-		}
-		.content{
-			flex-grow: 99;
-			display: flex;
-			flex-direction: column;
-			
-			justify-content: center;
-			align-items: center;
-		}
-		
-		.form{
-			background: white;
-			padding: 0.5rem 2rem;
-			box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%), inset 0 0 0 rgb(0 0 0 / 50%);
-			
-			min-height: 10rem;
-			min-width: 10rem;
-		}
-		
-		.row{					
-			margin-bottom: .5rem;
-		}			
-		.p{
-			margin: 2rem 0;
-		}
-		.center{
-			max-width: 1300px;
-			margin: 0 auto;
-		}
-		
-		.input-text{
-			font-size: 100%;
-			margin: 0;
-			vertical-align: baseline;
-			width: 150px;
-			padding: 5px;
-			border: 1px solid #c9c9c9;
-			-webkit-box-shadow: 0 2px 4px rgb(0 0 0 / 7%) inset;
-			box-shadow: 0 2px 4px rgb(0 0 0 / 7%) inset;
-			border-radius: 3px;
-			-moz-box-sizing: border-box;
-			-webkit-box-sizing: border-box;
-			box-sizing: border-box;
-			margin-bottom: 1rem;
-		}
-		.input-width-full {
-				width: 100%;
-		}
-		
-		.input-text:focus {
-				border-color: #57BCEB;
-				-webkit-box-shadow: 0 2px 4px rgb(0 0 0 / 7%) inset, 0 0 3px #00a8ff;
-				box-shadow: 0 2px 4px rgb(0 0 0 / 7%) inset, 0 0 3px #00a8ff;
-				outline: none;
-		}
-		label {
-			display: block;
-			margin-bottom: 3px;
-	}
-		
-		.button{
-			display: inline-block;
-			padding: .5rem;
-			text-align: center;
-			border: 1px solid #dfe3e8;
-			border-radius: 5px;
-			font-size: 100%;
-			line-height: 15px;
-			color: #434343;
-			background: #fbfcfc;
-			background: -moz-linear-gradient(top, #fbfcfc 0%, #f0f2f5 100%);
-			background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fbfcfc), color-stop(100%,#f0f2f5));
-			background: -webkit-linear-gradient(top, #fbfcfc 0%,#f0f2f5 100%);
-			background: -o-linear-gradient(top, #fbfcfc 0%,#f0f2f5 100%);
-			background: -ms-linear-gradient(top, #fbfcfc 0%,#f0f2f5 100%);
-			background: linear-gradient(top, #fbfcfc 0%,#f0f2f5 100%);
-			font-family: Verdana, sans-serif;
-			cursor: pointer;
-			text-decoration: none;
-			*margin-right: 5px;
-		}
-		.button:hover {
-				text-decoration: none;
-				background: #f0f2f5;
-		}
-		.button:active {			
-			box-shadow: 0 0 3px rgb(0 0 0 / 30%) inset;
-		}
-		
-		h1, h2, h3, h4, h5, h6 {
-			font-size: 13px;
-			line-height: 1.6em;
-			font-weight: normal;
-			margin: 0;
-			font-family: 'PT Sans', Arial, sans-serif;
-		}
-		
-		#header {
-			background: #090909;
-			height: 51px;
-			margin: 0 auto;
-			position: relative;
-			width :100%;
-		}
-		
-		#header .site-name {
-			font-size: 25px;
-			line-height: 1em;
-			float: left;
-			padding-top: 11px;
-			margin-right: 30px;
-			margin-left: 18px;
-		}
-		#header .site-name a {
-			color: #fff;
-			text-decoration: none;
-		}
-		#header .site-name a:hover {
-			color: #eee;
-	  }
-		
-		.anim{
-			transition: opacity .2s, transform .2s;
-		}
-		
-		.reg_form.hide{
-			opacity: 0;
-			transform: translateY(-10rem) scaleY(0);
-		}
-		
-		.form.hide{
-			padding: 0;
-			display: none;
-		}
-		
-		.loading{
-			display: block;
-			opacity: 1;
-			transform: translateY(0) scaleY(1);
-			min-height: 12rem;
-			overflow: hidden;
-		}
-		.loading.hide{
-			display: none;
-			opacity: 0;
-			transform: translateY(10rem) scaleY(0);
-		}
-		
-		.success{
-			color:  #009688;
-			display: block;
-			opacity: 1;
-			transform: translateY(0) scaleY(1);
-		}
-		.fail{
-			color:  #e91e63;
-			display: block;
-			opacity: 1;
-			transform: translateY(0) scaleY(1);
-		}
-		.success.hide{
-			display: none;
-			opacity: 0;
-			transform: translateY(10rem) scaleY(0);
-		}
-		.fail.hide{
-			display: none;
-			opacity: 0;
-			transform: translateY(10rem) scaleY(0);
-		}
-		
-				
+    <meta charset="utf-8">
+    <title>Регистрация / Имажинария</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <script>
+        // data-src="/templates/skin/synio/js/reguser_script.js"
+        document.addEventListener('DOMContentLoaded', function () {
+            let bLocal = !location.host;
+            let script_url = bLocal ? "" : "https://imaginaria.ru/registration_ajax_callback.php";
 
-		@keyframes roll {
-			10% {
-				transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
-			}
-			30% {
-				transform: rotateX(120deg) rotateY(240deg) rotateZ(0deg) translateX(40px) translateY(40px);
-			}
-			50% {
-				transform: rotateX(240deg) rotateY(480deg) rotateZ(0deg) translateX(-40px) translateY(-40px);
-			}
-			70% {
-				transform: rotateX(360deg) rotateY(720deg) rotateZ(0deg);
-			}
-			90% {
-				transform: rotateX(480deg) rotateY(960deg) rotateZ(0deg);
-			}
-		}
-		
-		.die_content{
-			/*transform: translate(-110px,-80px);*/
-			position: relative;
-				min-height: 15rem;
-				min-width: 15rem;
-		}
-		.die {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			transform-style: preserve-3d;
-			transition: transform 0.5s ease-out;
-			cursor: pointer;
-			transform: rotateX(-53deg);
-		}
-		.die.rolling {
-			animation: roll 3s linear;
-		}
-		.die[data-face="1"] {
-			transform: rotateX(-53deg) rotateY(0deg);
-		}
-		.die[data-face="2"] {
-			transform: rotateX(-53deg) rotateY(72deg);
-		}
-		.die[data-face="3"] {
-			transform: rotateX(-53deg) rotateY(144deg);
-		}
-		.die[data-face="4"] {
-			transform: rotateX(-53deg) rotateY(216deg);
-		}
-		.die[data-face="5"] {
-			transform: rotateX(-53deg) rotateY(288deg);
-		}
-		.die[data-face="16"] {
-			transform: rotateX(127deg) rotateY(-72deg);
-		}
-		.die[data-face="17"] {
-			transform: rotateX(127deg) rotateY(-144deg);
-		}
-		.die[data-face="18"] {
-			transform: rotateX(127deg) rotateY(-216deg);
-		}
-		.die[data-face="19"] {
-			transform: rotateX(127deg) rotateY(-288deg);
-		}
-		.die[data-face="20"] {
-			transform: rotateX(127deg) rotateY(-360deg);
-		}
-		.die[data-face="6"] {
-			transform: rotateX(11deg) rotateZ(180deg) rotateY(0deg);
-		}
-		.die[data-face="7"] {
-			transform: rotateX(11deg) rotateZ(180deg) rotateY(72deg);
-		}
-		.die[data-face="8"] {
-			transform: rotateX(11deg) rotateZ(180deg) rotateY(144deg);
-		}
-		.die[data-face="9"] {
-			transform: rotateX(11deg) rotateZ(180deg) rotateY(216deg);
-		}
-		.die[data-face="10"] {
-			transform: rotateX(11deg) rotateZ(180deg) rotateY(288deg);
-		}
-		.die[data-face="11"] {
-			transform: rotateX(11deg) rotateY(-252deg);
-		}
-		.die[data-face="12"] {
-			transform: rotateX(11deg) rotateY(-324deg);
-		}
-		.die[data-face="13"] {
-			transform: rotateX(11deg) rotateY(-396deg);
-		}
-		.die[data-face="14"] {
-			transform: rotateX(11deg) rotateY(-468deg);
-		}
-		.die[data-face="15"] {
-			transform: rotateX(11deg) rotateY(-540deg);
-		}
-		.die .face {
-			position: absolute;
-			left: 50%;
-			top: 0;
-			margin: 0 -50px;
-			border-left: 50px solid transparent;
-			border-right: 50px solid transparent;
-			border-bottom: 86px solid rgba(30, 180, 20, 0.75);
-			width: 0px;
-			height: 0px;
-			transform-style: preserve-3d;
-			backface-visibility: hidden;
-			counter-increment: steps 1;
-			
-			transition: border-bottom-color .8s ease-in;
-		}
-		.die.bad .face{
-			border-bottom-color: #e91e63bf;
-		}
-		.die .face:before {
-			content: counter(steps);
-			position: absolute;
-			top: 21.5px;
-			left: -100px;
-			color: #fff;
-			text-shadow: 0px -1px 1px #525252;
-			font-size: 43px;
-			text-align: center;
-			line-height: 77.4px;
-			width: 200px;
-			height: 86px;
-		}
-		.die .face:nth-child(1) {
-			transform: rotateY(0deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-		}
-		.die .face:nth-child(2) {
-			transform: rotateY(-72deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-		}
-		.die .face:nth-child(3) {
-			transform: rotateY(-144deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-		}
-		.die .face:nth-child(4) {
-			transform: rotateY(-216deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-		}
-		.die .face:nth-child(5) {
-			transform: rotateY(-288deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
-		}
-		.die .face:nth-child(16) {
-			transform: rotateY(-108deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-		}
-		.die .face:nth-child(17) {
-			transform: rotateY(-36deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-		}
-		.die .face:nth-child(18) {
-			transform: rotateY(36deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-		}
-		.die .face:nth-child(19) {
-			transform: rotateY(108deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-		}
-		.die .face:nth-child(20) {
-			transform: rotateY(180deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
-		}
-		.die .face:nth-child(6) {
-			transform: rotateY(360deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-		}
-		.die .face:nth-child(7) {
-			transform: rotateY(288deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-		}
-		.die .face:nth-child(8) {
-			transform: rotateY(216deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-		}
-		.die .face:nth-child(9) {
-			transform: rotateY(144deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-		}
-		.die .face:nth-child(10) {
-			transform: rotateY(72deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
-		}
-		.die .face:nth-child(11) {
-			transform: rotateY(252deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-		}
-		.die .face:nth-child(12) {
-			transform: rotateY(324deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-		}
-		.die .face:nth-child(13) {
-			transform: rotateY(396deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-		}
-		.die .face:nth-child(14) {
-			transform: rotateY(468deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-		}
-		.die .face:nth-child(15) {
-			transform: rotateY(540deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
-		}
+            function randd(min, max) {
+                return Math.floor(arguments.length > 1 ? (max - min + 1) * Math.random() + min : (min + 1) * Math.random());
+            }
 
-	</style>
+            function hide_form() {
+                let oForm = document.querySelector('.reg_form');
+                if (oForm) {
+                    oForm.classList.add('hide');
+                    setTimeout(function () {
+                        oForm.remove();
+
+                    }, 20);
+                }
+
+            }
+
+            async function show_loader() {
+                let oLoader = document.querySelector('.loading');
+                if (oLoader) {
+                    oLoader.classList.remove('hide');
+                }
+            }
+
+            function set_loader() {
+                let oCube = document.querySelector('.cube');
+                if (oCube) {
+                    let nVal = randd(2, 5);
+                    oCube.classList.add('roll-' + nVal);
+                }
+            }
+
+            async function die_ok() {
+                let oCube = document.querySelector('.die');
+                if (oCube) {
+                    pretty_roll(20)
+                }
+            }
+
+            async function die_bad() {
+                let oCube = document.querySelector('.die');
+                if (oCube) {
+                    pretty_roll(1, true)
+                }
+            }
+
+            function show_success() {
+                let oForm = document.querySelector('.form');
+                if (oForm) {
+                    oForm.classList.remove('hide');
+                }
+
+                let oEl = document.querySelector('.success');
+                if (oEl) {
+                    oEl.classList.remove('hide');
+                }
+            }
+
+            function show_fail(sText = 'Увы. Что-то пошло не так') {
+                setTimeout(function () {
+                    let oForm = document.querySelector('.form');
+                    if (oForm) {
+                        oForm.classList.remove('hide');
+                    }
+
+                    let oEl = document.querySelector('.fail');
+                    if (oEl) {
+                        let aTele = 'Если что, пишите в <a href="https://t.me/Imaginaria2021">телеграм чат Имажинарии</a>';
+                        oEl.innerHTML = sText + "<br>" + aTele;
+                        oEl.classList.remove('hide');
+                    }
+                }, 3000);
+
+            }
+
+            function sleep(nMs = 1000) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(function () {
+                        resolve()
+                    }, nMs);
+                });
+            }
+
+            async function _sendRequest(url = '', data = {}, method = 'POST') {
+                let abortController = new AbortController();
+                window.onbeforeunload = function (e) {
+                    abortController.abort();
+                };
+
+                //Default options are marked with *
+                const response = await fetch(url, {
+                    method: method, // *GET, POST, PUT, DELETE, etc.
+                    mode: 'cors', // no-cors, *cors, same-origin
+                    cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+                    credentials: 'same-origin', // include, *same-origin, omit
+                    headers: {
+                        'Content-Type': 'application/json;charset=utf-8' // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    redirect: 'follow', // manual, *follow, error
+                    referrerPolicy: 'no-referrer', // no-referrer, *client
+                    body: JSON.stringify(data), // body data type must match "Content-Type" header
+                    signal: abortController.signal
+                });
+                //return await response.json(); // parses JSON response into native JavaScript objects
+                return await response.text(); // parses JSON response into native JavaScript objects
+
+            }
+
+            /*
+             * Collect user's data
+             * No tests here (like injection)
+             */
+            async function sendRegisterData(oEvent) {
+                oEvent.preventDefault(); // prevent page reloading
+                let oLogin = document.querySelector('#login');
+                let oMail = document.querySelector('#email');
+                let oPass = document.querySelector('#pass1');
+                let oPass2 = document.querySelector('#pass2');
+
+                let sLogin = oLogin.value.trim();
+                let sMail = oMail.value.trim();
+                let sPass = oPass.value.trim();
+                let sPass2 = oPass2.value.trim();
+
+                if (sLogin.length < 3) {
+                    alert('Слишком короткий логин');
+                    return;
+                }
+                if (sMail.length < 3) {
+                    alert('Укажите приемлимый email');
+                    return;
+                }
+                if (sPass.length < 3) {
+                    alert('Пароль слишком короткий');
+                    return;
+                }
+
+                if (sPass != sPass2) {
+                    alert('Введенные пароли не совпадают!');
+                    return;
+                }
+
+                var sCaptcha = grecaptcha.getResponse();
+                if (sCaptcha || bLocal) {
+
+                    hide_form();
+                    show_loader();
+                    loading_roll();//rollTo(randomFace());
+                    let oData = {
+                        login: sLogin, // user data
+                        email: sMail, // user data
+                        pass: sPass, // user data
+                        stat: 'add',
+                        captcha: sCaptcha // !important
+                    };
+                    try {
+                        let oRegResp = await _sendRequest(script_url, oData, 'POST');
+
+                        //debugger;
+                        switch (oRegResp) {
+                            case 'ok':
+                                die_ok();
+                                sleep(1500);
+                                show_success();
+                                break;
+                            case 'err_cap':
+                                die_bad();
+                                sleep(1500);
+                                show_fail('Каптча показала, что вы подозрителньо напоминаете робота');
+                                break;
+                            case 'err_login':
+                                die_bad();
+                                sleep(1500);
+                                show_fail('С логином что-то не так');
+                                break;
+                            case 'err_email':
+                                die_bad();
+                                sleep(1500);
+                                show_fail('С указанной почтой что-то не так');
+                                break;
+                            case 'err_pass':
+                                die_bad();
+                                sleep(1500);
+                                show_fail('С указанным паролем что-то не так');
+                                break;
+                            case 'err_empty':
+                                die_bad();
+                                sleep(1500);
+                                show_fail('Внезапно выяснилось, что логин, пароль или почта не заполнены');
+                                break;
+                            case 'err_login_mail':
+                                die_bad();
+                                sleep(1500);
+                                show_fail('Логин или почта уже зарегистрированы');
+                                break;
+                            case 'not_ok':
+                                die_bad();
+                                sleep(1500);
+                                show_fail('Что-то пошло не так при добавлении пользователя');
+                                break;
+                            default:
+                                die_bad();
+                                sleep(1500);
+                                show_fail();
+                        }
+                        oLogin.value = '';
+                        oMail.value = '';
+                        sPass.value = '';
+                        sPass2.value = '';
+
+                    } catch (error) {
+                        die_bad();
+                        sleep(500);
+                        show_fail('Ошибка запроса');
+                    }
+
+                } else {
+                    alert('Каптча не пройдена');
+                }
+            }
+
+            let $die = document.querySelector('.die'),
+                sides = 20,
+                initialSide = 1,
+                lastFace,
+                timeoutId,
+                transitionDuration = 500,
+                animationDuration = 3000
+
+            function randomFace() {
+                var face = Math.floor((Math.random() * sides)) + initialSide;
+                lastFace = face == lastFace ? randomFace() : face;
+                return face;
+            }
+
+            function rollTo(face) {
+                clearTimeout(timeoutId);
+                $die.classList.remove('rolling');
+
+                $die.dataset.face = face;
+            }
+
+            function reset() {
+                $die.dataset.face = null;
+                $die.classList.remove('rolling');
+            }
+
+            function loading_roll() {
+                let nVal = randd(2, 19);
+                pretty_roll(nVal, false);
+            }
+
+            function pretty_roll(nSide, bBad) {
+                clearTimeout(timeoutId);
+                $die.classList.add('rolling');
+
+                timeoutId = setTimeout(function () {
+                    $die.classList.remove('rolling');
+                    if (bBad) {
+                        $die.classList.add('bad');
+                    } else {
+                        $die.classList.remove('bad');
+                    }
+                    rollTo(nSide);
+                }, animationDuration);
+
+                return false;
+            }
+
+
+            $die.onclick = function () {
+                if (!$die.classList.contains('rolling')) {
+                    rollTo(randomFace());
+                }
+            }
+
+            rollTo(randomFace());
+
+            //make_form();
+            //remove_old_recaptcha_script();
+            //set_recaptcha_script();
+            set_loader();
+            let oButton = document.querySelector('#registration');
+            if (oButton) {
+                oButton.onclick = sendRegisterData; // bind event
+            }
+        });
+
+    </script>
+    <!-- <script src="reguser_script.js"></script>  -->
+    <!--<script data-google-src="https://www.google.com/recaptcha/api.js"></script>-->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+    <link href="https://imaginaria.ru/templates/favicon/favicon.ico?v1" rel="shortcut icon">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: #fbfcfc;
+            font-size: 12px;
+            font-family: Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 18px;
+            color: #000;
+        }
+
+        #wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .content {
+            flex-grow: 99;
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form {
+            background: white;
+            padding: 0.5rem 2rem;
+            box-shadow: 0 3px 6px rgb(0 0 0 / 16%), 0 3px 6px rgb(0 0 0 / 23%), inset 0 0 0 rgb(0 0 0 / 50%);
+
+            min-height: 10rem;
+            min-width: 10rem;
+        }
+
+        .row {
+            margin-bottom: .5rem;
+        }
+
+        .p {
+            margin: 2rem 0;
+        }
+
+        .center {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .input-text {
+            font-size: 100%;
+            margin: 0;
+            vertical-align: baseline;
+            width: 150px;
+            padding: 5px;
+            border: 1px solid #c9c9c9;
+            -webkit-box-shadow: 0 2px 4px rgb(0 0 0 / 7%) inset;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 7%) inset;
+            border-radius: 3px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            margin-bottom: 1rem;
+        }
+
+        .input-width-full {
+            width: 100%;
+        }
+
+        .input-text:focus {
+            border-color: #57BCEB;
+            -webkit-box-shadow: 0 2px 4px rgb(0 0 0 / 7%) inset, 0 0 3px #00a8ff;
+            box-shadow: 0 2px 4px rgb(0 0 0 / 7%) inset, 0 0 3px #00a8ff;
+            outline: none;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: .5rem;
+            text-align: center;
+            border: 1px solid #dfe3e8;
+            border-radius: 5px;
+            font-size: 100%;
+            line-height: 15px;
+            color: #434343;
+            background: #fbfcfc;
+            background: -moz-linear-gradient(top, #fbfcfc 0%, #f0f2f5 100%);
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #fbfcfc), color-stop(100%, #f0f2f5));
+            background: -webkit-linear-gradient(top, #fbfcfc 0%, #f0f2f5 100%);
+            background: -o-linear-gradient(top, #fbfcfc 0%, #f0f2f5 100%);
+            background: -ms-linear-gradient(top, #fbfcfc 0%, #f0f2f5 100%);
+            background: linear-gradient(top, #fbfcfc 0%, #f0f2f5 100%);
+            font-family: Verdana, sans-serif;
+            cursor: pointer;
+            text-decoration: none;
+            *margin-right: 5px;
+        }
+
+        .button:hover {
+            text-decoration: none;
+            background: #f0f2f5;
+        }
+
+        .button:active {
+            box-shadow: 0 0 3px rgb(0 0 0 / 30%) inset;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-size: 13px;
+            line-height: 1.6em;
+            font-weight: normal;
+            margin: 0;
+            font-family: 'PT Sans', Arial, sans-serif;
+        }
+
+        #header {
+            background: #090909;
+            height: 51px;
+            margin: 0 auto;
+            position: relative;
+            width: 100%;
+        }
+
+        #header .site-name {
+            font-size: 25px;
+            line-height: 1em;
+            float: left;
+            padding-top: 11px;
+            margin-right: 30px;
+            margin-left: 18px;
+        }
+
+        #header .site-name a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #header .site-name a:hover {
+            color: #eee;
+        }
+
+        .anim {
+            transition: opacity .2s, transform .2s;
+        }
+
+        .reg_form.hide {
+            opacity: 0;
+            transform: translateY(-10rem) scaleY(0);
+        }
+
+        .form.hide {
+            padding: 0;
+            display: none;
+        }
+
+        .loading {
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scaleY(1);
+            min-height: 12rem;
+            overflow: hidden;
+        }
+
+        .loading.hide {
+            display: none;
+            opacity: 0;
+            transform: translateY(10rem) scaleY(0);
+        }
+
+        .success {
+            color: #009688;
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scaleY(1);
+        }
+
+        .fail {
+            color: #e91e63;
+            display: block;
+            opacity: 1;
+            transform: translateY(0) scaleY(1);
+        }
+
+        .success.hide {
+            display: none;
+            opacity: 0;
+            transform: translateY(10rem) scaleY(0);
+        }
+
+        .fail.hide {
+            display: none;
+            opacity: 0;
+            transform: translateY(10rem) scaleY(0);
+        }
+
+
+        @keyframes roll {
+            10% {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+            30% {
+                transform: rotateX(120deg) rotateY(240deg) rotateZ(0deg) translateX(40px) translateY(40px);
+            }
+            50% {
+                transform: rotateX(240deg) rotateY(480deg) rotateZ(0deg) translateX(-40px) translateY(-40px);
+            }
+            70% {
+                transform: rotateX(360deg) rotateY(720deg) rotateZ(0deg);
+            }
+            90% {
+                transform: rotateX(480deg) rotateY(960deg) rotateZ(0deg);
+            }
+        }
+
+        .die_content {
+            /*transform: translate(-110px,-80px);*/
+            position: relative;
+            min-height: 15rem;
+            min-width: 15rem;
+        }
+
+        .die {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
+            cursor: pointer;
+            transform: rotateX(-53deg);
+        }
+
+        .die.rolling {
+            animation: roll 3s linear;
+        }
+
+        .die[data-face="1"] {
+            transform: rotateX(-53deg) rotateY(0deg);
+        }
+
+        .die[data-face="2"] {
+            transform: rotateX(-53deg) rotateY(72deg);
+        }
+
+        .die[data-face="3"] {
+            transform: rotateX(-53deg) rotateY(144deg);
+        }
+
+        .die[data-face="4"] {
+            transform: rotateX(-53deg) rotateY(216deg);
+        }
+
+        .die[data-face="5"] {
+            transform: rotateX(-53deg) rotateY(288deg);
+        }
+
+        .die[data-face="16"] {
+            transform: rotateX(127deg) rotateY(-72deg);
+        }
+
+        .die[data-face="17"] {
+            transform: rotateX(127deg) rotateY(-144deg);
+        }
+
+        .die[data-face="18"] {
+            transform: rotateX(127deg) rotateY(-216deg);
+        }
+
+        .die[data-face="19"] {
+            transform: rotateX(127deg) rotateY(-288deg);
+        }
+
+        .die[data-face="20"] {
+            transform: rotateX(127deg) rotateY(-360deg);
+        }
+
+        .die[data-face="6"] {
+            transform: rotateX(11deg) rotateZ(180deg) rotateY(0deg);
+        }
+
+        .die[data-face="7"] {
+            transform: rotateX(11deg) rotateZ(180deg) rotateY(72deg);
+        }
+
+        .die[data-face="8"] {
+            transform: rotateX(11deg) rotateZ(180deg) rotateY(144deg);
+        }
+
+        .die[data-face="9"] {
+            transform: rotateX(11deg) rotateZ(180deg) rotateY(216deg);
+        }
+
+        .die[data-face="10"] {
+            transform: rotateX(11deg) rotateZ(180deg) rotateY(288deg);
+        }
+
+        .die[data-face="11"] {
+            transform: rotateX(11deg) rotateY(-252deg);
+        }
+
+        .die[data-face="12"] {
+            transform: rotateX(11deg) rotateY(-324deg);
+        }
+
+        .die[data-face="13"] {
+            transform: rotateX(11deg) rotateY(-396deg);
+        }
+
+        .die[data-face="14"] {
+            transform: rotateX(11deg) rotateY(-468deg);
+        }
+
+        .die[data-face="15"] {
+            transform: rotateX(11deg) rotateY(-540deg);
+        }
+
+        .die .face {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            margin: 0 -50px;
+            border-left: 50px solid transparent;
+            border-right: 50px solid transparent;
+            border-bottom: 86px solid rgba(30, 180, 20, 0.75);
+            width: 0px;
+            height: 0px;
+            transform-style: preserve-3d;
+            backface-visibility: hidden;
+            counter-increment: steps 1;
+
+            transition: border-bottom-color .8s ease-in;
+        }
+
+        .die.bad .face {
+            border-bottom-color: #e91e63bf;
+        }
+
+        .die .face:before {
+            content: counter(steps);
+            position: absolute;
+            top: 21.5px;
+            left: -100px;
+            color: #fff;
+            text-shadow: 0px -1px 1px #525252;
+            font-size: 43px;
+            text-align: center;
+            line-height: 77.4px;
+            width: 200px;
+            height: 86px;
+        }
+
+        .die .face:nth-child(1) {
+            transform: rotateY(0deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+        }
+
+        .die .face:nth-child(2) {
+            transform: rotateY(-72deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+        }
+
+        .die .face:nth-child(3) {
+            transform: rotateY(-144deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+        }
+
+        .die .face:nth-child(4) {
+            transform: rotateY(-216deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+        }
+
+        .die .face:nth-child(5) {
+            transform: rotateY(-288deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+        }
+
+        .die .face:nth-child(16) {
+            transform: rotateY(-108deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+        }
+
+        .die .face:nth-child(17) {
+            transform: rotateY(-36deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+        }
+
+        .die .face:nth-child(18) {
+            transform: rotateY(36deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+        }
+
+        .die .face:nth-child(19) {
+            transform: rotateY(108deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+        }
+
+        .die .face:nth-child(20) {
+            transform: rotateY(180deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+        }
+
+        .die .face:nth-child(6) {
+            transform: rotateY(360deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(7) {
+            transform: rotateY(288deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(8) {
+            transform: rotateY(216deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(9) {
+            transform: rotateY(144deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(10) {
+            transform: rotateY(72deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(11) {
+            transform: rotateY(252deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(12) {
+            transform: rotateY(324deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(13) {
+            transform: rotateY(396deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(14) {
+            transform: rotateY(468deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+        }
+
+        .die .face:nth-child(15) {
+            transform: rotateY(540deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+        }
+
+    </style>
 </head>
 <body>
 
- <div id="wrapper">
-	<header id="header" role="banner">	
-		<div class='center'>
-		<h1 class="site-name"><a href="https://imaginaria.ru">Имажинария</a></h1>
-		</div>
-	</header>
-	<div class='content'>
-		<div class='form'>			
-			<div class='reg_form anim'>
+<div id="wrapper">
+    <header id="header" role="banner">
+        <div class='center'>
+            <h1 class="site-name"><a href="https://imaginaria.ru">Имажинария</a></h1>
+        </div>
+    </header>
+    <div class='content'>
+        <div class='form'>
+            <div class='reg_form anim'>
 
-				<div class='p'>
-					<label>Логин: </label>
-					<div><input type="text" size="20" maxlength="65" name="login" id="login" value="" class="input-text input-width-full" required ></div>
-				
-						<label>Email: </label>
-						<div><input type="email" size="20" maxlength="65" name="email" id="email" value="" class="input-text input-width-full" required ></div>
-				</div>	
-				<div class='p'>
-						<label>Пароль: </label>
-						<div><input type="password" size="20" maxlength="65" name="pass1" id="pass1" value="" class="input-text input-width-full" required ></div>
-				
-						<label>Пароль еще разик: </label>
-						<div><input type="password" size="20" maxlength="65" name="pass2" id="pass2" value="" class="input-text input-width-full" required ></div>
-				</div>	
-				
-				<div class="g-recaptcha" data-sitekey="6LeQ0lAaAAAAAH2D4apU6ghquCH2rJ0ZsFORAdA5"></div>
-				
-				<!--p>
-					На почту придет письмо с данными об аккаунте.
-				</p-->
-	 
-				<div class='p'><button id='registration' class='button'>Зарегистрироваться</button></div>
-			</div>
-			
-			
-			
-			<p class='success anim hide'>
-					Ура! Регистрация завершена успешно. Теперь можно зайти на сайт, использую логин и пароль.
-			</p>
-			
-			<p class='fail anim hide'>
-				
-			</p>
-			
-			
-		<div class='loading anim hide'>
-				<!--div id="diceFieald" class="widther">
-					<div class="scene">
-						<div class="cube stop-1">
-						 <div class="cube__face cube__face--1">⚀</div> 
-						 <div class="cube__face cube__face--2">⚁</div> 
-						 <div class="cube__face cube__face--3">⚂</div> 
-						 <div class="cube__face cube__face--4">⚃</div> 
-						 <div class="cube__face cube__face--5">⚄</div> 
-						 <div class="cube__face cube__face--6">⚅</div>
-						</div>
-					</div>
-				</div-->
-				<div class="die_content">
-						<div class="die">
-							<figure class="face face-1"></figure>
-							<figure class="face face-2"></figure>
-							<figure class="face face-3"></figure>
-							<figure class="face face-4"></figure>
-							<figure class="face face-5"></figure>
-							<figure class="face face-6"></figure>
-							<figure class="face face-7"></figure>
-							<figure class="face face-8"></figure>
-							<figure class="face face-9"></figure>
-							<figure class="face face-10"></figure>
-							<figure class="face face-11"></figure>
-							<figure class="face face-12"></figure>
-							<figure class="face face-13"></figure>
-							<figure class="face face-14"></figure>
-							<figure class="face face-15"></figure>
-							<figure class="face face-16"></figure>
-							<figure class="face face-17"></figure>
-							<figure class="face face-18"></figure>
-							<figure class="face face-19"></figure>
-							<figure class="face face-20"></figure>
-						</div>
-					</div>
-			</div>
-			
-		</div>
-		
-		
-	</div>
+                <div class='p'>
+                    <label>Логин: </label>
+                    <div><input type="text" size="20" maxlength="65" name="login" id="login" value=""
+                                class="input-text input-width-full" required></div>
+
+                    <label>Email: </label>
+                    <div><input type="email" size="20" maxlength="65" name="email" id="email" value=""
+                                class="input-text input-width-full" required></div>
+                </div>
+                <div class='p'>
+                    <label>Пароль: </label>
+                    <div><input type="password" size="20" maxlength="65" name="pass1" id="pass1" value=""
+                                class="input-text input-width-full" required></div>
+
+                    <label>Пароль еще разик: </label>
+                    <div><input type="password" size="20" maxlength="65" name="pass2" id="pass2" value=""
+                                class="input-text input-width-full" required></div>
+                </div>
+
+                <!--<div class="g-recaptcha" data-sitekey="6LeQ0lAaAAAAAH2D4apU6ghquCH2rJ0ZsFORAdA5"></div>-->
+                <div class="cf-turnstile" data-sitekey="0x4AAAAAAAcFu1JCgXcTOghj"></div>
+
+                <!--p>
+                    На почту придет письмо с данными об аккаунте.
+                </p-->
+
+                <div class='p'>
+                    <button id='registration' class='button'>Зарегистрироваться</button>
+                </div>
+            </div>
+
+
+            <p class='success anim hide'>
+                Ура! Регистрация завершена успешно. Теперь можно зайти на сайт, использую логин и пароль.
+            </p>
+
+            <p class='fail anim hide'>
+
+            </p>
+
+
+            <div class='loading anim hide'>
+                <!--div id="diceFieald" class="widther">
+                    <div class="scene">
+                        <div class="cube stop-1">
+                         <div class="cube__face cube__face--1">⚀</div>
+                         <div class="cube__face cube__face--2">⚁</div>
+                         <div class="cube__face cube__face--3">⚂</div>
+                         <div class="cube__face cube__face--4">⚃</div>
+                         <div class="cube__face cube__face--5">⚄</div>
+                         <div class="cube__face cube__face--6">⚅</div>
+                        </div>
+                    </div>
+                </div-->
+                <div class="die_content">
+                    <div class="die">
+                        <figure class="face face-1"></figure>
+                        <figure class="face face-2"></figure>
+                        <figure class="face face-3"></figure>
+                        <figure class="face face-4"></figure>
+                        <figure class="face face-5"></figure>
+                        <figure class="face face-6"></figure>
+                        <figure class="face face-7"></figure>
+                        <figure class="face face-8"></figure>
+                        <figure class="face face-9"></figure>
+                        <figure class="face face-10"></figure>
+                        <figure class="face face-11"></figure>
+                        <figure class="face face-12"></figure>
+                        <figure class="face face-13"></figure>
+                        <figure class="face face-14"></figure>
+                        <figure class="face face-15"></figure>
+                        <figure class="face face-16"></figure>
+                        <figure class="face face-17"></figure>
+                        <figure class="face face-18"></figure>
+                        <figure class="face face-19"></figure>
+                        <figure class="face face-20"></figure>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
 </div>
 </body>
 </html>
