@@ -23,7 +23,7 @@
         "ext-readline": "*",
         "ext-simplexml": "*",
         "psr/log": "^1.1",
-        "karelwintersky/arris": "^1.70",
+        "karelwintersky/arris": "^2",
         "karelwintersky/arris.cache": "^0.5.2",
         "mobiledetect/mobiledetectlib": "^2.8",
         "vlucas/phpdotenv": "^3.3",
@@ -39,16 +39,13 @@
         "ajur-media/fluentpdo": "^1.0",
         "imaginaria/liveimage": "^1.0",
         "imaginaria/jevix": "^2.3",
-        "smarty/smarty": "^4.1",
+        "smarty/smarty": "=4.1.1",
         "imaginaria/datetimeparser": "^1.0",
         "imaginaria/dbsimple": "^1.1.0",
         "phpmailer/phpmailer": "^6.6",
         "mr-lexx/hacker-console": "^2.1",
         "livestreet/dklabcache": "^1.0",
         "nilportugues/sphinx-search": "^1.0"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-latest"
     },
     "autoload": {
         "files": [

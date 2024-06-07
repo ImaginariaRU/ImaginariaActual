@@ -30,7 +30,6 @@ install: 	##@system Install package. Don't run it manually!!!
 	cp makefile.production-toolkit $(PROJECT_PATH)/makefile
 	mkdir -p $(DESTDIR)$(PATH_MANTICONF_INDEXES)
 	cp -r config/searchd/* $(DESTDIR)$(PATH_MANTICONF_INDEXES)/
-	chmod -R 0644 $(DESTDIR)$(PATH_MANTICONF_INDEXES)/
 	install -d $(PROJECT_PATH)/logs
 	install -d $(PROJECT_PATH)/cache
 	install -d $(PROJECT_PATH)/tmp

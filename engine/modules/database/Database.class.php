@@ -95,7 +95,8 @@ class ModuleDatabase extends Module
             return $this->aInstance[$sDSNKey];
         } else {
             /**
-             * Если такого коннекта еще не было то создаём его
+             * Если такого коннекта еще не было -- то создаём его
+             * @var $oConnect DbSimple\DatabaseInterface
              */
             $oDbSimple = Generic::connect($sDSN);
             /**
@@ -113,6 +114,7 @@ class ModuleDatabase extends Module
              * считайте это костылём
              */
             $oDbSimple->query("set character_set_client='utf8', character_set_results='utf8', collation_connection='utf8_bin' ");
+            $oDbSimple->query("SET GLOBAL sql_mode='STRICT_TRANS_TABLES,STRICT_ALL_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,TRADITIONAL,NO_ENGINE_SUBSTITUTION,ALLOW_INVALID_DATES';");
             $oWrapper = new ModuleDatabase_DbSimpleWrapper($oDbSimple);
             /**
              * Сохраняем коннект

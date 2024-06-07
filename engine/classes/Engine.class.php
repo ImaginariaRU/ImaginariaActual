@@ -257,21 +257,20 @@ class Engine extends LsObject
      */
     static public function getInstance()
     {
-        if (isset(self::$oInstance) and (self::$oInstance instanceof self)) {
-            return self::$oInstance;
-        } else {
+        if (!isset(self::$oInstance) or !self::$oInstance instanceof self) {
             self::$oInstance = new self();
-            return self::$oInstance;
         }
+        return self::$oInstance;
     }
 
     /**
      * Создает объект сущности, контролируя варианты кастомизации
      *
-     * @param  string $sName Имя сущности, возможны сокращенные варианты.
+     * @param string $sName Имя сущности, возможны сокращенные варианты.
      * Например <pre>ModuleUser_EntityUser</pre> эквивалентно <pre>User_User</pre> и эквивалентно <pre>User</pre> т.к. имя сущности совпадает с именем модуля
-     * @param  array $aParams
+     * @param array $aParams
      * @return Entity
+     * @throws Exception
      */
     public static function GetEntity($sName, $aParams = array())
     {

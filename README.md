@@ -52,7 +52,19 @@ cp /srv/Imaginaria.Config/plugins.dat /path/to/plugins/plugins.dat
 + 
 
 
+---
+Оптимизация админки и списка пользователей
 
+(однократно)
+CREATE INDEX ls_adminset_adminset_key_IDX USING BTREE ON ls_adminset (adminset_key);
+CREATE INDEX ls_adminban_user_id_IDX USING BTREE ON ls_adminban (user_id);
+
+раз в год
+
+SET SQL_MODE='ALLOW_INVALID_DATES';
+DELETE FROM ls_session WHERE YEAR(session_date_last) != 2024;
+OPTIMIZE TABLE ls_session;
+DELETE FROM ls_shistory WHERE YEAR(enter_date) != 2024;
 
 
 
