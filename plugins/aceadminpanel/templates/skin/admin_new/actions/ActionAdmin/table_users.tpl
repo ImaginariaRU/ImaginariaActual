@@ -2,7 +2,7 @@
     <thead>
     <tr>
         <th>
-            <input type="checkbox" id="id_0" onclick="aceAdmin.selectAllUsers(this);"/>
+            <input type="checkbox" id="id_0t" onclick="aceAdmin.selectAllUsers(this);"/>
         </th>
         <th>
             id
@@ -121,4 +121,48 @@
         </tr>
     {/foreach}
     </tbody>
+    <tfoot>
+        <tr>
+            <th>
+                <input type="checkbox" id="id_0b" onclick="aceAdmin.selectAllUsers(this);"/>
+            </th>
+            <th>
+                id
+            </th>
+            <th>
+                Login
+            </th>
+            <th>
+                {$oLang->adm_users_date_reg}
+            </th>
+
+            <th>
+                E-Mail
+            </th>
+
+            {if $oConfig->GetValue('general.reg.activation')}
+                <th>
+                    Активирован, спустя <br> минут
+                </th>
+            {/if}
+
+            <th>
+                {$oLang->adm_users_last_activity}
+            </th>
+
+            <th>
+                {if $sMode != 'admins'}Бан?{else}&nbsp;{/if}
+            </th>
+
+            <th>
+                Постов
+            </th>
+            <th>
+                Комментов
+            </th>
+            <th>
+                Голосов
+            </th>
+        </tr>
+    </tfoot>
 </table>
