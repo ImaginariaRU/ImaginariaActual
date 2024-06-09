@@ -13,6 +13,7 @@
 
 		{hook run='main_menu_item'}
 
+		<li><a href="/search.php" target="_blank">ПОИСК</a> <i></i></li>
 		<li class="nav-main-more"><a href="#" id="dropdown-mainmenu-trigger" onclick="return false">{$aLang.more}</a></li>
 	</ul>
 
