@@ -25,10 +25,11 @@ Config::LoadFromFile(__DIR__ . '/config.php');
 Config::Set("module.search", [
     'entity_prefix' =>  '',
     'sphinx'    =>  [
-//        'host'  =>  'localhost',
-//        'port'  =>  3312
-	'host' => 'unix:///tmp/sphinx.socket'
-    ]
+        'host'  =>  '127.0.0.1',
+        'port'  =>  9312
+	// 'host' => 'unix:///tmp/sphinx.socket'
+    ],
+    'mode'  =>  'new'
 ]);
 
 /**

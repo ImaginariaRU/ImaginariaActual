@@ -47,7 +47,9 @@ class ActionSearch extends Action
      */
     public function Init()
     {
-        \Arris\Helpers\Server::redirect("/search.php?query=" . $_REQUEST['q']);
+        if (Config::Get('module.search.mode') != 'legacy') {
+            \Arris\Helpers\Server::redirect("/search.php?query=" . $_REQUEST['q']);
+        }
 
         $this->SetDefaultEvent('index');
         $this->Viewer_AddHtmlTitle($this->Lang_Get('search'));
@@ -73,7 +75,7 @@ class ActionSearch extends Action
      * Поиск топиков
      *
      */
-    function EventTopics()
+    public function EventTopics()
     {
         /**
          * Ищем
@@ -92,25 +94,27 @@ class ActionSearch extends Action
              * Получаем топик-объекты по списку идентификаторов
              */
             $aTopics = $this->Topic_GetTopicsAdditionalData(array_keys($this->aSphinxRes['matches']));
-            /**
-             * Конфигурируем парсер jevix
-             */
-            $this->Text_LoadJevixConfig('search');
-            /**
-             *  Делаем сниппеты
-             */
-            foreach ($aTopics AS $oTopic) {
+
+            if (Config::Get('module.search.mode') == 'legacy') {
                 /**
-                 * Т.к. текст в сниппетах небольшой, то можно прогнать через парсер
+                 * Конфигурируем парсер jevix
                  */
-                $oTopic->setTextShort($this->Text_JevixParser($this->Sphinx_GetSnippet(
-                    $oTopic->getText(),
-                    'topics',
-                    $aReq['q'],
-                    '<span class="searched-item">',
-                    '</span>'
-                )));
+                $this->Text_LoadJevixConfig('search');
+                /**
+                 *  Делаем сниппеты
+                 */
+                foreach ($aTopics AS $oTopic) {
+                    // Т.к. текст в сниппетах небольшой, то можно прогнать через парсер
+                    $oTopic->setTextShort($this->Text_JevixParser($this->Sphinx_GetSnippet(
+                        $oTopic->getText(),
+                        'topics',
+                        $aReq['q'],
+                        '<span class="searched-item">',
+                        '</span>'
+                    )));
+                }
             }
+
             /**
              *  Отправляем данные в шаблон
              */
@@ -165,6 +169,7 @@ class ActionSearch extends Action
         foreach ($this->sTypesEnabled as $sType => $aExtra) {
             $aRes['aCounts'][$sType] = intval($this->Sphinx_GetNumResultsByType($aReq['q'], $sType, $aExtra));
         }
+
         if ($aRes['aCounts'][$aReq['sType']] == 0) {
             /**
              *  Объектов необходимого типа не найдено
@@ -241,22 +246,26 @@ class ActionSearch extends Action
              *  Получаем топик-объекты по списку идентификаторов
              */
             $aComments = $this->Comment_GetCommentsAdditionalData(array_keys($this->aSphinxRes['matches']));
-            /**
-             * Конфигурируем парсер jevix
-             */
-            $this->Text_LoadJevixConfig('search');
-            /**
-             * Делаем сниппеты
-             */
-            foreach ($aComments AS $oComment) {
-                $oComment->setText($this->Text_JevixParser($this->Sphinx_GetSnippet(
-                    htmlspecialchars($oComment->getText()),
-                    'comments',
-                    $aReq['q'],
-                    '<span class="searched-item">',
-                    '</span>'
-                )));
+
+            if (Config::Get('module.search.mode') == 'legacy') {
+                /**
+                 * Конфигурируем парсер jevix
+                 */
+                $this->Text_LoadJevixConfig('search');
+                /**
+                 * Делаем сниппеты
+                 */
+                foreach ($aComments AS $oComment) {
+                    $oComment->setText($this->Text_JevixParser($this->Sphinx_GetSnippet(
+                        htmlspecialchars($oComment->getText()),
+                        'comments',
+                        $aReq['q'],
+                        '<span class="searched-item">',
+                        '</span>'
+                    )));
+                }
             }
+
             /**
              *  Отправляем данные в шаблон
              */

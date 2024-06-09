@@ -1,6 +1,7 @@
 <?php
 
 use Arris\Path;
+use Arris\Toolkit\SphinxToolkit;
 use Monolog\Logger;
 use Monolog\Handler\StreamHandler;
 
@@ -49,6 +50,8 @@ try {
 
     $oProfiler = ProfilerSimple::getInstance(Config::Get('path.root.server') . '/logs/' . Config::Get('sys.logs.profiler_file'), Config::Get('sys.logs.profiler'));
     $iTimeId = $oProfiler->Start('full_time');
+
+    SphinxToolkit::init('127.0.0.1', 9306);
 
     $oRouter = Router::getInstance();
     $oRouter->Exec();

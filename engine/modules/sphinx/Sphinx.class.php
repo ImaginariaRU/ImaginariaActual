@@ -1,9 +1,9 @@
 <?php
 
-//@todo: include via Sphinx
-
 // require_once(Config::Get('path.root.engine') . '/lib/external/Sphinx/sphinxapi.php');
 
+use Arris\Toolkit\SphinxToolkit;
+use Foolz\SphinxQL\SphinxQL;
 use NilPortugues\Sphinx\SphinxClient;
 
 /**
@@ -47,7 +47,7 @@ class ModuleSphinx extends Module
     }
 
     /**
-     * Возвращает число найденых элементов в зависимоти от их типа
+     * Возвращает число найденых элементов в зависимости от их типа
      *
      * @param string $sTerms Поисковый запрос
      * @param string $sObjType Тип поиска
@@ -56,9 +56,119 @@ class ModuleSphinx extends Module
      */
     public function GetNumResultsByType($sTerms, $sObjType = 'topics', $aExtraFilters = [])
     {
-        $aResults = $this->FindContent($sTerms, $sObjType, 1, 1, $aExtraFilters);
+        $query_expression = SphinxQL::expr("count(*) AS count");
+        $search_index = $sObjType . "Index";
 
-        return is_array($aResults) ? $aResults['total_found'] : 0;
+        $searchd_query = SphinxToolkit::createInstance()
+            ->select($query_expression)
+            ->from($search_index);
+
+        if ($sObjType == 'topics') {
+            $match = ['topic_title', 'topic_text'];
+
+            $searchd_query = $searchd_query
+                ->match($match, $sTerms)
+                ->where('topic_publish', 1);
+            ;
+        } else {
+            $match = ['comment_text'];
+
+            $searchd_query = $searchd_query
+                ->match($match, $sTerms)
+                ->where('comment_delete', 0);
+        }
+
+        $result_data = $searchd_query->execute();
+
+        $result = $result_data->fetchAssoc();
+
+        return empty($result) ? 0 : $result['count'];
+    }
+
+    public function FindContent($sTerms, $sObjType, $iOffset = 0, $iLimit = 1, $aExtraFilters = [])
+    {
+        if (Config::Get('module.search.mode') == 'legacy') {
+            $result = $this->FindContent_legacy($sTerms, $sObjType, $iOffset, $iLimit, $aExtraFilters);
+        } else {
+            $result = $this->FindContent_new($sTerms, $sObjType, $iOffset, $iLimit, $aExtraFilters);
+        }
+
+        return $result;
+    }
+
+    public function FindContent_new($sTerms, $sObjType, $iOffset = 0, $iLimit = 1, $aExtraFilters = [])
+    {
+        /*switch ($sObjType) {
+            case 'topics': {
+                break;
+            }
+        }*/
+
+        if ($sObjType == 'topics') {
+            $query_expression = SphinxQL::expr(implode(', ', [
+                'id',
+                'topic_date_add',
+                'topic_publish',
+                'tag',
+                'nice_url',
+                "highlight({before_match='<em>', after_match='</em>', around=8}, 'topic_title') AS topic_title",
+                "highlight({before_match='<em>', after_match='</em>', around=8}, 'topic_text') AS topic_text",
+                "user_login",
+                "yearmonthday(topic_date_add) AS topic_date_ymd"
+            ]));
+
+            $orderBy = 'topic_date_add';
+            $match = ['topic_title', 'topic_text'];
+
+        } else {
+            $query_expression = SphinxQL::expr(implode(', ', [
+                'id',
+                'comment_date',
+                "highlight({before_match='<em>', after_match='</em>', around=8}, 'comment_text') AS comment_text",
+                "yearmonthday(comment_date) AS comment_date_ymd"
+            ]));
+
+            $orderBy = 'comment_date';
+            $match = ['comment_text'];
+        }
+
+        $search_index = $sObjType . "Index";
+
+        $query_dataset = SphinxToolkit::createInstance()
+            ->select($query_expression)
+            ->from($search_index)
+            ->offset($iOffset)
+            ->orderBy($orderBy, 'DESC')
+            ->match($match, $sTerms)
+            ->limit($iLimit);
+
+        // array('topics' => array('topic_publish' => 1), 'comments' => array('comment_delete' => 0));
+        if (!is_null($aExtraFilters)) {
+            foreach ($aExtraFilters AS $sAttribName => $sAttribValue) {
+                $query_dataset = $query_dataset->where(
+                    $sAttribName,
+                    $sAttribValue
+                );
+            }
+        }
+
+        $result_data = $query_dataset->execute();
+
+        $dataset = [];
+        while ($row = $result_data->fetchAssoc()) {
+            if ($sObjType == 'topics') {
+                $row['cdate'] = date('H:i / d.m.Y', $row['topic_date_add']);
+                $row['cdate_time'] = date('H:i', $row['topic_date_add']);
+                $row['cdate_date'] = date('d.m.Y', $row['topic_date_add']);
+            }
+
+            $dataset[ $row['id'] ] = $row;
+        }
+
+        return [
+            'total_found'   =>  count($dataset),
+            'matches'       =>  $dataset
+        ];
     }
 
     /**
@@ -71,7 +181,7 @@ class ModuleSphinx extends Module
      * @param array $aExtraFilters Список фильтров
      * @return array|bool
      */
-    public function FindContent($sTerms, $sObjType, $iOffset, $iLimit, $aExtraFilters)
+    public function FindContent_legacy($sTerms, $sObjType, $iOffset, $iLimit, $aExtraFilters)
     {
         /**
          * используем кеширование при поиске
