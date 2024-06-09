@@ -47,6 +47,8 @@ class ActionSearch extends Action
      */
     public function Init()
     {
+        \Arris\Helpers\Server::redirect("/search.php?query=" . $_REQUEST['q']);
+
         $this->SetDefaultEvent('index');
         $this->Viewer_AddHtmlTitle($this->Lang_Get('search'));
     }

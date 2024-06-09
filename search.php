@@ -45,15 +45,22 @@ if (!empty($_REQUEST['query'])) {
     em {
         background-color: yellow;
     }
+    input {
+        font-size: large;
+    }
 </style>
+<h3>Поиск по топикам</h3>
 <form method="get" action="<?php echo $_SERVER['SCRIPT_NAME']; ?>">
-<table>
+<table width="100%">
     <tr>
-        <td>
+        <td width="100">
             <input type="text" name="query" value="<?=$template_query?>" placeholder="искать..." size="70">
         </td>
         <td>
             &nbsp;&nbsp;<input type="submit" value="Искать по заголовку и тексту топика">
+        </td>
+        <td width="*" style="text-align: right">
+            <input type="button" onclick="window.location.href='/'" value="Назад на имажинарию" style="text-align: right">
         </td>
     </tr>
 </table>
